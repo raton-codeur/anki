@@ -1,0 +1,143 @@
+les paquets
+	"1 - basic"
+	"2 - type-in"
+	"3 - write-out"
+
+les types de cartes sur anki
+	"1 - card"
+		champs
+			"front"
+			"back"
+	"2 - type-in card"
+		champs
+			"front"
+			"back"
+			"extra"
+	"3 - cloze"
+		champs
+			"text"
+			"extra"
+	"4 - type-in cloze"
+		champs
+			"text"
+			"extra"
+
+input.txt
+	\n
+		retour à la ligne
+	\t
+		tabulation
+	' '
+		espace
+	white space
+		' '
+		\n
+		\t
+	soft trim
+		retirer ' ' et \n
+		des extrémités
+	hard trim
+		retirer tous les white spaces
+		des extrémités
+
+		normalement, les lignes sont hard trimées à droite par vscode
+			sinon, on va le faire
+
+	les type de sections
+		● "C1"
+		● "C2"
+		● "C3"
+		Z
+			au moins un trou
+				"{{c" + [ un nombre ] + "::" + [ un texte ] (+ "::" + [ un texte ]) + "}}"
+
+			● "Z1"
+			● "Z2"
+			● "Z3"
+		● MS
+			champs :
+				english
+				extra english
+				french
+				extra french
+
+	les séparateurs de sections
+		"-"
+			● paquet 1
+			● C1 ou Z1
+		"--"
+			● paquet 2
+			● C2 ou Z2
+		"---"
+			● paquet 3
+			● C3 ou Z3
+		"-)"
+			mosalingua
+
+		seul sur une ligne
+		avec potentiellement des white spaces autour
+
+	changement de champ
+		@
+
+		pas forcément sur une ligne
+
+	insertion de prononciation
+		"//" + [texte phonétique] + "//"
+
+	texte vide
+		il ne contient que des white space
+
+		à l'inverse
+		on dit "rempli"
+			au moins un caractère qui n'est pas un white space
+
+	section vide
+		tous ses champs sont vides
+
+	balises
+		il ne faut pas trafiquer les espaces et les autres attributs
+
+		<img src="">
+		<span style="color:red;"></span>
+		<sup></sup>
+		<sub></sub>
+		<b></b>
+
+		on suppose qu'elle sont bien formées
+			pas d'espace inutile ni d'autres attributs
+
+		le texte d'une balise c'est
+		● pour img
+			ce qu'on met dans "src"
+		● pour les autres
+			ce qu'on met entre les deux balises
+
+	image_path
+		(chaîne de caractères représentant un) chemin vers un fichier
+
+	INPUT_PATH
+		chemin vers input.txt
+	IMAGES_SRC_DIR
+		chemin vers le dossier source des images
+	IMAGES_DST_DIR
+		chemin vers le dossier de destination des images
+	LOG_DIR
+		chemin vers le dossier de sauvegarde des input traitées
+	MS_OUTPUT_PATH
+		chemin vers le fichier temporaire de sortie pour mosalingua.
+		le contenu de ce fichier est écrasé à chaque nouvelle sortie mosalingua.
+
+à faire
+	vérifier l'input
+		déplacer les images correspondant aux image_paths dans images_dst_dir
+		si elles n'y sont pas déjà
+
+	construire les notes
+		pour ms
+			afficher de façon formatée dans un fichier
+		pour les autres
+			envoyer les notes à anki avec ankiconnect
+
+	réinitialiser l'input
+	et garder une copie des 10 derniers input traités

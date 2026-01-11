@@ -1,0 +1,12 @@
+
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+build
+}}
+
+↔︎ façon de compiler
+-
+

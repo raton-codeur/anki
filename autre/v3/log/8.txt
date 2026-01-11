@@ -1,0 +1,124 @@
+-
+
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+docs
+}}
+
+↔︎ documentation
+-
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+feat
+}}
+
+→ ajout d'une fonctionnalité
+-
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+fix
+}}
+
+→ correction d· bug
+-
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+
+}}
+
+↔︎
+-
+
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+perf
+}}
+
+→ amélioration des performances
+
+-
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+refactor
+}}
+
+→ refactorisation
+-
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+style
+}}
+
+↔︎ style d· texte
+@
+exemple : changer [] indentation / espaces
+-
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+test
+}}
+
+↔︎ tests
+-
+
+--
+git commit -m "<<span style="color:red;">type</span>>(<portée>): <sujet>" -m "<description>"
+
+
+{{c1::
+ci
+}}
+
+↔︎ intégration continue
+@
+"Continuous Integration"
+
+automatiser la vérification du code à chaque changement, via des pipelines
+
+exemple de pipeline CI pour un projet C++ :
+ ├── Step 1: Installer les dépendances
+ ├── Step 2: Compiler le projet
+ ├── Step 3: Lancer les tests unitaires
+ ├── Step 4: Vérifier les fuites mémoire (valgrind)
+ ├── Step 5: Vérifier la norme (coding style)
+ └── Step 6: Générer un rapport
+
+-
+
+
+
+
+
+
+
+
+
+
+
+
+
+

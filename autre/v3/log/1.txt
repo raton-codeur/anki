@@ -1,0 +1,382 @@
+-
+
+
+
+ppm (unité)
+
+= {{c1::partie par million::st}}
+@= 10<sup>-6</sup>
+-
+
+sanskrit
+
+→ "mandala"
+
+→ {{c1::cercle::st}}
+-
+
+
+{{c1::Hiro Mashima ::qui ?}}
+
+→ Fairy Tail
+@ <img src="
+capture_30_11_2025_11_06_48.png
+" />
+-
+--
+{{c1::mangaka }} :
+
+
+auteur
+
+d· manga
+-
+
+
+{{c1::Tsugumi Ōba::qui ? - écriture}}
+
+{{c1::Takeshi Obata::dessin}}
+
+→ Death Note
+@
+on ne connaît pas l'identité officielle de Tsugumi Ōba
+-
+
+● originel :
+
+qui remonte à l’origine, au commencement
+
+→ parler de quelque chose qui exitait avant toute transformation
+
+exemples :
+"l'état originel du manuscrit a été retrouvé"
+le "péché originel"
+"la forêt a retrouvé son aspect originel"
+
+● original
+
+○ qui n'est pas une copie
+
+exemples : "le document original", "l'œuvre originale", "j'ai perdu mon certificat original"
+
+○ qui est créatif, étonnant, inhabituel
+
+exemples : une "idée originale", une "personne originale"
+
+-
+--
+TypeScript
+
+<img src="
+capture_30_11_2025_11_23_49.png
+" />
+
+
+déclarer [ a(0, 0) :
+
+un·e variable (const) de type A ]
+@
+const a: A = {x: 0, y: 0};
+-
+--
+TypeScript
+
+<img src="
+capture_30_11_2025_11_27_13.png
+" />
+
+
+déclarer [ a :
+
+une instance de A ]
+@
+const a = new A();
+-
+--
+JavaScript
+
+
+const canvas = document.getElementById("myCanvas");
+const ctx = {{c1::canvas.getContext("2d")::contexte de dessin 2D}};
+
+-
+--
+TypeScript
+
+<img src="
+capture_30_11_2025_11_32_33.png
+" />
+
+
+déclarer [ t :
+
+un tableau (const) (vide) de points ]
+@
+const t: Point[] = [];
+@
+≡ const t: { x: number, y: number }[] = [];
+-
+--
+TypeScript
+
+
+déclarer [ s :
+
+un ensemble ← "a", "b" ]
+@
+const s = new Set(["a", "b"]);
+--
+TypeScript
+
+<img src="
+capture_30_11_2025_11_36_20.png
+" />
+
+
+● {{c1::s.add("a")}} → ajouter "a"
+
+● {{c1::s.has("a")}} -> a "a" ?
+
+● {{c1::s.delete("a")}} -> supprimer "a"
+-
+--
+TypeScript
+
+
+déclarer [ s :
+
+un ensemble de strings ]
+@
+const s = new Set<string>();
+-
+--
+JavaScript
+
+<img src="
+capture_30_11_2025_11_40_42.png
+" />
+
+
+● {{c1::a.shift()}} → [20, 30]
+
+● {{c1::a.pop()}} → [10, 20]
+-
+--
+<img src="
+capture_30_11_2025_11_43_21.png
+" />
+@
+requestAnimationFrame
+@
+"appelle cette fonction juste avant le prochain rafraîchissement de l’écran"
+
+paramètre possible pour loop : timestamp en millisecondes depuis que la page a commencé à charger
+-
+-)
+desecrate@ˈdɛs.əˌkreɪt @profaner
+-
+
+ VPS (serveur)
+
+= {{c1::Virtual Private Server::anglais}}
+
+= {{c1::serveur privé virtuel::fr}}
+-
+
+--
+aText
+
+
+● {{c1::htm}} → base HTML rapide
+
+● {{c1::htf}} → base HTML avec fichiers
+-
+{{c1::Toby Fox
+::qui ?}}
+
+→ Undertale
+@
+<img src="
+capture_05_12_2025_10_29_07.png
+" /> <img src="
+capture_05_12_2025_10_29_30.png
+" /> <img src="
+capture_05_12_2025_10_29_48.png
+" />
+-
+anglais
+
+
+to quell
+
+/kwɛl/
+
+→ stopper quelque chose de [fort / violent]
+
+→ réprimer, étouffer (révolte / sentiment), apaiser (émotion)
+
+
+exemples : to quell a rebellion, quell fears, quell doubts
+-
+anglais
+
+
+mould
+
+→ {{c1::musty::odeur (de moisi)}}
+-
+anglais
+
+
+armament
+
+→ {{c1::armement}}
+@
+/ˈɑrməmənt/
+-
+anglais
+
+
+innards
+
+→ {{c1::tripes / entrailles}}
+@/ˈɪnərdz/
+
+familier
+
+
+● guts
+● entrails : plus dramatique, visuel, utilisé en littérature ou descriptions horrifiques
+● viscera : technique, médical
+-
+<img src="
+capture_08_12_2025_09_12_08.png
+" />
+@
+Miles Teller
+
+
+Whiplash
+Peter dans Divergente
+Mr Fantastic dans Les 4 Fantastiques de 2015
+Miles dans Project X
+-
+{{c1::Damien Chazelle::réalisateur}} →
+
+● Whiplash
+
+● La La Land
+-
+<img src="
+capture_08_12_2025_09_18_23.png
+" />
+@
+J(onathan) K(imble) Simmons
+
+
+directeur du Daily Bugle dans Spider-man
+Whiplash
+Tenzin dans The Legend of Korra
+-
+<img src="
+capture_08_12_2025_09_22_26.png
+" />
+
+(personnages d· Whiplash)
+@
+Terence Fletcher, Andrew Neiman
+-
+Projet X
+
+
+<img src="
+capture_08_12_2025_09_23_45.png
+" />
+
+(personnages et acteurs)
+@
+● JB (Jonathan Daniel Brown)
+
+● Costa (Oliver Cooper)
+
+● Thomas Kub (Thomas Mann)
+-
+
+--
+aText
+
+
+Fairy Tail@ fai
+-
+
+--
+aText
+
+
+personnage@ pe
+-
+Fairy Tail
+
+
+Magnolia
+
+→ cathédrale {{c1::Kaldia}}
+-
+Fairy Tail
+
+↔︎ {{c1::Magnolia::ville}}
+
+→ {{c1::Fiore::royaume}}
+-
+Fairy Tail
+
+
+<img src="
+capture_08_12_2025_09_50_59.png
+" /> <img src="
+capture_08_12_2025_09_51_10.png
+" /> <img src="
+capture_08_12_2025_09_51_23.png
+" /> <img src="
+capture_08_12_2025_09_51_37.png
+" />
+@
+Natsu Dragneel
+Lucy Heartfilia
+Gray Fullbuster
+Erza Scarlet
+-
+
+Fairy Tail
+
+
+<img src="
+capture_08_12_2025_09_52_28.png
+" /> <img src="
+capture_08_12_2025_09_52_42.png
+" />
+
+(personnages + race)
+@
+Happy, Carla, Exceed
+-
+Fairy Tail
+
+
+<img src="
+capture_08_12_2025_09_53_40.png
+" />
+@Shagotte
+-
+Fairy Tail
+
+
+<img src="
+capture_08_12_2025_09_54_26.png
+" />@Wendy Marvell
+-
+-)
+oil rig
+@
+plate-forme pétrolière
+-

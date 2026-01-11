@@ -1,0 +1,4 @@
+CSS<br /><br /><br />CDN Tailwind	&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;	Content Delivery Network<br /><br />version de Tailwind CSS hébergé en ligne<br /><br />on peut aussi configurer Tailwind dans le script
+CSS<br /><br /><br />apparence d· souris au survol :<br /><br />"main + doigt"	cursor: pointer;	
+JavaScript<br /><br /><br />[ n : un nombre ]<br /><br />→ string :<br /><br />● longueur 3<br /><br />● remplir avec des "0" si besoin	String(n).padStart(3, "0")	
+<img src="capture_10_12_2025_10_52_42.png" /><br /><br />(mets amérindien - 2)	(un) hominy, (un) nixtamal	grains de maïs séchés et traités à l'aide d'une [ solution alcaline<br /><br />= (le) lessi = eau de chaux = eau + [ chaux éteinte = hydroxyde de calcium ] ]<br /><br /><br />la traitement s'appelle la nixtamalisation

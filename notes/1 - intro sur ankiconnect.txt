@@ -1,0 +1,55 @@
+ankiconnect
+	add-on
+
+	serveur HTTP lancé par anki desktop
+		● 127.0.0.1:8765
+		● envoyer une requete HTTP avec curl
+			-X POST
+				sous entendu par -d
+			-H
+				header
+			-d = --data
+				body de la requete
+
+				content type par défaut : application/x-www-form-urlencoded
+
+				si on en met plusieurs,
+				curl les concatène avec &
+					exemple
+						-d "user=quentin" -d "pass=123"
+						->
+						user=quentin&pass=123
+
+					option -G
+						ça les passe en query string
+						(= dans l'URL)
+				● --data-raw
+					n’interprète pas certains caractères spéciaux
+
+					par exemple
+						@
+				● --data-binary
+					octets "tels quels"
+
+					recommandé pour envoyer un fichier JSON
+			retour de la commande
+				body de la réponse
+			json
+				-H "Content-Type: application/json"
+			fichier "f"
+				--data-binary @f
+			-v
+				afficher les détails de la requête (méthode, url, headers), détails de la connexion (tls, redirect), les headers de la réponse
+
+	on envoit du JSON au format {action, version de l'api, params}
+		action
+			nom de la commande
+				exemple
+					addNote
+
+	ça exécute des actions sur Anki
+		modifier la collection
+
+	on reçoit {result, error}
+		error
+			null si tout va bien

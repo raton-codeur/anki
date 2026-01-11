@@ -1,0 +1,85 @@
+encodage du texte
+	trim
+		ligne de séparateur
+			hard trim de la ligne
+				on retire ' ' et \t
+				autour du séparateur
+
+		champ
+			soft trim
+				pas de \n
+				au début et fin d'un champ
+
+		ligne
+			à droite
+				hard trim
+
+				pas de ' ' et \t
+
+				normalement, vscode le fait déjà
+
+			à gauche
+				soft trim
+
+				pas de ' '
+
+	sections vides ignorés
+		pas de section vide créee
+
+	plusieurs espaces successifs
+		ankiconnect les encodera tout seul par un seul espace
+
+	\n
+		<br>
+
+	tabulation
+		"&nbsp;&nbsp;&nbsp;&nbsp;"
+
+	hard trim
+		trou
+		texte phonétique
+		texte de balise
+
+	// encadrant un texte phonétique
+		/
+
+	sauf dans les balises
+		<
+			&lt;
+		>
+			&gt;
+
+output pour les sections ms
+	lorsque seulement deux champs sont spécifiés,
+	ce sont les champs Anglais et Français
+
+	entre les notes
+		\n-\n
+
+	changement de champ
+		\n
+
+	champ vide
+		<p></p>
+
+échappement
+	si on veut encoder "-", "--", "---" ou "-)" seul sur une ligne
+	sans indiquer de changement de section,
+	on doit utiliser "\-", "\--", "\---" ou "\-)".
+	en contrepartie,
+	si on veut encoder "\-" quelque part,
+		même au milieu d'une ligne ou d'un mot,
+	on doit utiliser "\\-".
+
+	si on veut encoder @
+	sans indiquer de changement de champ,
+	on doit utiliser \@.
+	si on veut encoder \@,
+	on doit utiliser \\@.
+
+	si on veut encoder "//"
+	sans insérer de prononciation,
+	et qu'il y a un autre "//" présent,
+	on doit utiliser "\//" sur au moins un des "//".
+	en contrepartie, si on veut encoder "\//" quelque part,
+	on doit utiliser "\\//".

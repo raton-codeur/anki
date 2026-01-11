@@ -1,0 +1,199 @@
+-
+
+
+--
+config NGINX
+
+
+<img src="
+capture_21_11_2025_14_58_56.png
+" />
+
+(bloquer le dossier "admin")
+@
+
+location /admin/ {return 403;}
+-
+
+--
+config NGINX
+
+
+<img src="
+capture_21_11_2025_15_02_19.png
+" />
+
+(rediriger : HTTP → HTTPS)
+@
+return 301 https://monsite.com$request_uri;
+@
+$request_uri = target d· requete HTTP
+-
+--
+config NGINX
+
+
+<img src="
+capture_21_11_2025_15_04_14.png
+" />
+
+(rediriger pour retirer "www")
+@
+return 301 http://monsite.com$request_uri;
+@
+$request_uri = target d· requete HTTP
+-
+
+web
+
+
+● .com / .fr / .net / .org
+
+est un·e {{c1::TLD}} = {{c1::Top-Level Domain::st - anglais}}
+
+
+● www.monsite.com → {{c1::sous-domaine}}.{{c1::domaine}}.{{c1::TLD}}
+--
+config NGINX
+
+
+$request_uri
+
+→ {{c1::$uri::version normalisée}}
+@
+pourcentages décodés (exemple : %20 → ' '),
+pas de query string,
+/blog//article → /blog/article,
+autres réécritures
+-
+--
+config NGINX
+
+
+<img src="
+capture_21_11_2025_15_29_57.png
+" />
+
+(try_files basique)
+@
+location / {try_files $uri $uri/ =404;}
+-
+
+
+-
+config NGINX
+
+
+on peut faire :
+
+● return + code + URL
+
+<img src="
+capture_21_11_2025_15_48_34.png
+" />
+
+● return + code + chemin
+
+<img src="
+capture_21_11_2025_15_45_33.png
+" />
+-
+
+--
+config NGINX
+
+request-target : /chemin/vers/ressource?param1=valeur&param2=valeur
+
+
+● {{c1::$request_uri::variable}} : tout
+
+● {{c1::$uri}} : /chemin/vers/ressource
+
+● {{c1::$query_string}} : param1=valeur&param2=valeur
+-
+serveur web
+
+
+<img src="
+capture_21_11_2025_16_40_18.png
+" />
+
+même [adresse IP + port]
+
+→ plusieurs [sites web / (noms de) domaines]
+
+
+on appelle ça un virtual host = vhost
+
+(donc là il y a deux virtual hosts)
+--
+NGINX
+
+
+{{c1::/var/log/nginx::dossier}} →
+
+● access.log
+
+● error.log
+
+-
+
+
+[ serveur web
+
+→ exécuter un script ]
+
+→ {{c1::CGI::nom}} = {{c1::Common Gateway Interface::st - anglais}}
+-
+--
+document root par défaut
+
+d· NGINX@/usr/share/nginx/html@donc NGINX sert ce dossier par défaut aux clients
+-
+--
+Python
+
+
+entrée standard
+
+→ s : une string@
+s = sys.stdin.read()
+-
+(un) oxyure
+
+→ {{c1::oxyurose::maladie (parasitaire)}}
+-
+
+(un) oxyure =
+
+{{c1::enterobius vermicularis::latin}}
+
+
+ce sont des {{c1::nématodes}}, une classe de vers ronds
+@
+<b>un</b> nématode
+-
+--
+shell
+
+projet TypeScript
+
+
+exécuter tsc
+
+← node_modules/.bin
+@
+npx tsc
+-
+tsc -w
+
+≡ tsc --{{c1::watch}}
+-
+npm install {{c1::--save-dev::option}} typescript
+
+→ dépendance pour le dev
+-
+
+
+
+

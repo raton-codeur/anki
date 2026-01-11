@@ -1,0 +1,476 @@
+-
+
+--
+C
+
+
+remplacer
+
+● l'entrée standard par [ fd : un file descriptor ]
+
+● la sortie standard par fd
+
+● la sortie d'erreur par fd
+@
+dup2(fd, 0);, dup2(fd, 1);, dup2(fd, 2);
+@
+ne pas oublier de close le fd après
+-
+--
+shell
+
+
+● printf "{{c1::\\101}}"
+
+→ caractère ↔︎ [ ASCII en octal : 101 ]
+
+● printf "{{c1::\x41}}"
+
+→ caractère ↔︎ [ ASCII en hexadécimal : 41 ]
+
+● printf "{{c1::\u3B1}}"
+
+→ caractère ↔︎ [ Unicode : 3B1 ]
+@
+\U pour Unicode 32 bits (8 chiffres)
+par exemple : 0001F600 au lieu de 1F600
+
+
+--
+shell
+
+
+● "A" en octal
+
+● "é" en hexadécimal
+
+(avec printf)
+@
+printf "%o" "'A", printf "%x" "'é"
+@
+ensuite :
+● affichage via octal : printf "\\101"
+● affichage via hexa : printf "\x41"
+● affichage via unicode : printf "\ue9"
+-
+
+{{c1::actuaire::métier}}
+
+→ [ statistiques et modèles mathématiques
+
+→ assurance / finance / gestion des risques ]
+@
+prévoir les coûts et les risques futurs
+→ fixer les tarifs et constituer les réserves financières
+-
+
+anglais
+
+
+to subdue
+
+→ {{c1::maîtriser / réprimer / dompter}}
+@/səbˈdjuː/
+
+to subdue [one's] emotions = maîtrises ses émotions
+
+to subdue [people] → maîtriser [qqn / une foule]
+
+subdued [color / sound] → atténué
+
+to subdue a fire
+-
+anglais
+
+
+eerie
+
+→ {{c1::étrange}}, {{c1::mystérieux}}, {{c1::inquiétant}}
+@
+/ˈɪ(ə).ri/
+-
+-)
+bland
+@
+fade (goût)
+-
+-)
+tailored, custom-made
+@
+ˈteɪ.ləd
+"tailored" c'est aussi : "bien coupé" / "bien ajusté"
+"made-to-measure" existe aussi
+"tailor-made" possible aussi@
+sur mesure (vêtement)
+(2)
+-
+anglais
+
+
+bespoke
+
+→ {{c1::sur mesure (haut de gamme)}}
+@/bɪˈspəʊk (UK) / bɪˈspoʊk (US)/
+
+c'est surtout au UK. aux US, ça veut surtout dire "chic, rare".
+
+au sens figuré pour donné une impression d'exclusivité : a bespoke software
+-
+
+<img src="
+capture_17_11_2025_23_53_59.png
+" />@(un) photophore
+-
+anglais
+
+
+to delve into [something]
+
+→ {{c1::creuser}}, {{c1::approfondir}}, {{c1::se plonger dans}}
+@
+The journalist delved into the politician’s past
+Le journaliste a approfondi le passé du politicien
+
+She loves delving into old books to find forgotten stories
+Elle adore se plonger dans de vieux livres pour trouver des histoires oubliées
+
+The researchers delved into the data for several weeks
+Les chercheurs ont fouillé les données pendant plusieurs semaines
+-
+anglais
+
+
+lofty →
+
+● {{c1::haut}}
+
+● {{c1::noble (élevé moralement)}}
+
+● {{c1::hautain / prétentieux / condescendant}}
+@
+lofty goals = objectifs élevés
+lofty ideals = idéaux nobles
+
+lofty [tone / attitude] → hautain / prétentieux / condescendant
+
+lofty mountains = montagnes hautes
+-
+<img src="
+capture_18_11_2025_08_54_01.png
+" />
+@(François-)Xavier Emmanuelli
+
+
+1938 - 2025
+médecin
+cofondateur de Médecins sans frontières
+fondateur du SAMU social de Paris
+un peu de politique (action humanitaire d'urgence, logement des personnes défavorisées)
+-
+{{c1::Microsoft ::entreprise}}
+
+→ JavaScript
+
+→ TypeScript
+@
+TypeScript ―[compilation]→ JavaScript
+→ navigateur
+-
+JavaScript
+
++ types possibles
+
+(+ meilleure organisation)
+
+→ {{c1::TypeScript::language}}
+@
+TypeScript ―[compilation]→ JavaScript
+→ navigateur
+-
+● JavaScript → .{{c1::js::extension}}
+
+● TypeScript → .{{c1::ts}}
+--
+compilateur
+
+TypeScript
+@
+tsc
+-
+Node.js
+
+
+c'est un environnement d'exécution JavaScript.
+
+c'est un moteur JavaScript + des outils système + une API.
+
+ça permet d'exécuter du JavaScript directement hors navigateur.
+
+c'est basé sur le moteur (JavaScript) V8 de Google.
+-
+--
+shell
+
+
+exécuter [ f.js :
+
+un script JavaScript ]@node f.js
+-
+JavaScript
+
+
+npm
+
+= {{c1::Node Package Manager::st - anglais}}
+@
+gestionnaire de paquets de Node.js
+--
+(commande shell :)
+
+npm init
+
+→ {{c1::package.json::fichier créé}}
+-
+--
+projet JavaScript
+
+
+vérifier (les bibliothèques du dossier) node_modules
+
+et installer / mettre à jour@npm install
+@
+on vérifie package.json (plage de versions acceptées), package-lock.json (ce qu'on a installés exactement), et node_modules
+-
+--
+● npm install <lib> → {{c1::node_modules::dossier local}}
+
+● npm install {{c1::-g::option}} <lib> → global
+
+-
+
+
+
+● serveur HTTP
+
+ça veut juste dire : serveur qui utilise HTTP
+
+● un serveur web
+
+utilise souvent HTTP / c'est souvent un serveur HTTP
+
+mais il peut :
+fournir des fichiers (HTML, CSS, images...),
+exécuter des scripts (PHP, Python, Node...), gérer des formulaires, gérer les fichiers,
+gérer des fichiers de config (NGINX, Apache),
+faire des redirections, des erreurs personnalisées, de la compression, du reverse proxy, du load balancing, gérer TLS, des cookies...
+-
+serveur web
+
+
+URL <-> dossier (sans index.html)
+
+→ {{c1::autoindex::liste automatique des fichiers}}
+-
+
+
+--
+POST /upload HTTP/1.1
+Host: localhost:8080
+{{c1::Transfer-Encoding: chunked::body par morceaux}}
+
+4
+Wiki
+5
+pedia
+E
+ in chunks.
+0
+-
+--
+POST /login HTTP/1.1
+Host: localhost:8080
+Content-Type: application/x-www-form-urlencoded
+{{c1::Content-Length: 27::longueur du body : 27}}
+
+username=mathis&pwd=secret
+-
+
+structure
+
+d’une requête HTTP
+@
+● ligne de requête (= request line)
+
+● headers (/ en-têtes)
+
+● ligne vide
+
+(● body)
+-
+format
+
+d'une ligne de requête HTTP :
+
+<{{c1::méthode}}> <{{c1::target}}> <{{c1::version HTTP}}>
+-
+les versions HTTP :
+
+● 1991 → HTTP/{{c1::0.9}} :
+juste GET, pas de header / body, pas de status code,
+le serveur renvoie du HTML puis ferme la connexion
+
+● 1996 → HTTP/{{c1::1.0}} :
+headers (Content-Type, Content-Length...), status code,
+une requête = une connexion (par défaut mais keep-alive possible)
+
+● 1999 → HTTP/{{c1::1.1}} :
+keep-alive par défaut, headers obligatoires (host, content-length / transfert-encoding: chunked)
+possible : chunked transfer encoding, pipeline,
+meilleure gestion des caches
+
+● 2015 → HTTP/{{c1::2}} :
+plus optimisé : multiplexage, compression des headers, format binaire, priorisation des requêtes
+
+● 2022 → HTTP/{{c1::3}} :
+UDP à la place de TCP, moins de latence
+--
+header HTTP
+
+→ connexion persistante
+
+(pour HTTP/1.0)
+@
+Connection: keep-alive@par défaut depuis HTTP/1.1
+
+on peut demander de fermer avec "Connection: close"
+(côté client ou serveur)
+-
+--
+requête HTTP
+
+
+{{c1::User-Agent::nom d· header → nom d· navigateur}}: Mozilla/5.0
+
+
+-
+--
+requête HTTP
+
+Accept: <span style="color:red;">[...]</span>
+
+
+● {{c1::text/html::HTML}}
+
+● {{c1::text/css::CSS}}
+
+● {{c1::image/jpeg::image JPEG}}
+
+● {{c1::image/png::image PNG}}
+
+● {{c1::text/javascript::JavaScript}} / {{c1::application/javascript}}
+
+● {{c1::application/json::JSON}}
+
+● {{c1::application/octet-stream::binaire brut}}
+--
+requête HTTP :
+
+POST /login HTTP/1.1
+Host: localhost
+{{c1::Content-Type: application/x-www-form-urlencoded::type de données (formulaire simple)}}
+Content-Length: 27
+
+user=Mathis&pwd=secret
+
+--
+requête HTTP :
+
+POST /upload HTTP/1.1
+Host: localhost
+{{c1::Content-Type: multipart/form-data::type de données (formulaire en multipart)}}; boundary=----ABC123
+Content-Length: 289
+
+\------ABC123
+Content-Disposition: form-data; name="username"
+
+Mathis
+\------ABC123
+Content-Disposition: form-data; name="avatar"; filename="photo.jpg"
+Content-Type: image/jpeg
+
+(binary data...)
+\------ABC123--
+--
+config NGINX
+
+
+erreur 404
+
+→ /404.html : une page d'erreur personnalisée
+@
+error_page 404 /404.html;
+-
+--
+config NGINX
+
+
+taille maximale
+
+pour [] body :
+
+2M
+@
+client_max_body_size 2M;
+--
+
+
+
+config NGINX
+
+<img src="
+capture_20_11_2025_10_38_18.png
+" />
+
+● écouter sur le port 80
+
+● nom d· site / domaine : monsite.com
+
+● root (dans le serveur) : /var/www/monsite
+
+● page par défaut : index.html
+@
+listen 80; server_name monsite.com, root /var/www/monsite, index index.html
+@
+plusieurs listen possible, notamment "listen 443 ssl;" et adresse IP possible aussi comme "listen 192.168.1.10:80;"
+
+
+-
+--
+config NGINX
+
+
+<img src="
+capture_20_11_2025_10_52_27.png
+" />
+
+GET /images/chat.png →
+● /var/www/assets/images/chat.png
+● /var/www/assets/chat.png
+
+(changer [] préfixe pour le dossier images)
+@
+
+
+location /images/ {root /var/www/assets;}, location /images/ {alias /var/www/assets/;}
+
+
+
+
+
+
+
+
+
+
+
+

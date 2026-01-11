@@ -1,0 +1,311 @@
+-
+
+
+
+-
+
+
+anglais
+
+
+(a) mockup
+
+→ {{c1::maquette}}
+@
+/ˈmɒkʌp (UK) / ˈmɑːkʌp (US)/
+
+"faux produit final"
+
+représentation réaliste mais non fonctionnelle
+
+sinon, maquette se traduit plutôt par "model" ou "prototype"
+
+verbe : to mock up
+exemple : They mocked up the website to check the layout.
+-
+anglais
+
+
+randy
+
+→ {{c1::excité (sexuellement)}}
+-
+français
+
+
+bâfrer
+
+≈ {{c1::bouffer (= manger beaucoup, goulûment)}}
+@
+"Arrête de te bâfrer, tu vas être malade."
+"Il s’est bâfré de frites et de hamburgers."
+
+→ bâfreur = goinfre
+-
+
+
+<img src="
+capture_14_10_2025_16_32_37.png
+" />
+
+(partie supérieure du sternum)
+@
+(le) manubrium sternal
+-
+<img src="
+capture_14_10_2025_16_35_35.png
+" />
+
+(organe lymphoïde)
+@
+(un) thymus
+
+
+maturation des lymphocytes T
+
+-
+
+thymus d· veau
+
+→ ({{c1::un::un / une}}) {{c1::ris::en cuisine}} de veau
+-
+● pharaon d'Égypte
+
+● fils de Ramsès Ier
+
+● père de Ramsès II
+@
+Séthi Ier
+
+
+1324-1279
+---
+téléphonie mobile
+
+
+● 2G = {{c1::GSM::sigle}} → {{c1::Global System for Mobile communications ::st - anglais}}
+
+● 3G = {{c1::UMTS}} → {{c1::Universal Mobile Telecommunications System}}
+
+● 4G = {{c1::LTE}} → {{c1::Long Term Evolution}}
+
+● 5G = {{c1::NR}} → {{c1::New Radio}}
+@
+2G → internet en E (EDGE) ou G (GPRS)
+-
+● SMS → {{c1::Short Message Service::st - anglais}}
+
+● MMS → {{c1::Multimedia Messaging Service}}
+
+-
+français
+
+
+(un) arcane
+
+= {{c1::secret}}@du latin "arcanum" = "chose cachée", dérivé de arcanus = "secret, mystérieux"
+-
+<img src="
+capture_14_10_2025_16_59_58.png
+" />@
+● mer Caspienne
+
+● mer d'Aral
+
+
+<img src="
+capture_14_10_2025_17_01_03.png
+" />
+-
+<img src="
+capture_14_10_2025_17_02_46.png
+" />@(un) émeu d’Australie
+
+
+-
+monnaie roumaine
+
+(+ pluriel)
+@
+un leu → des lei
+
+
+du mot roumain leu, qui signifie « lion »
+
+1 leu = 100 bani
+
+10 lei ≈ 2 euros
+-
+
+français
+
+
+buller
+
+= glander
+
+
+exemples :
+
+● J’ai bullé tout le week-end.
+● Arrêtez de buller !
+-
+
+<img src="
+capture_14_10_2025_17_08_27.png
+" />@cathédrale Notre-Dame de Sées
+
+
+à Sées, près d'Alençon dans l'Orne
+-
+{{c1::(Tomoyasu) Hotei::qui ?}}
+
+→ Battle Without Honor or Humanity (musique)
+@
+he's a Japanese rock musician
+-
+
+échelle d· {{c1::Fujita}}
+
+→ (gravité des) tornade·
+-
+
+-)
+fanny pack (US), bum bag (UK)
+@ sac banane
+(2)
+-
+-)
+compact@
+poudrier (maquillage)
+-
+<img src="
+capture_22_10_2025_12_45_05.png
+" /> <img src="
+capture_22_10_2025_12_45_14.png
+" /> <img src="
+capture_22_10_2025_12_45_29.png
+" />
+
+(sud-ouest des États-Unis)
+@
+(un) mesquite
+
+
+proche des genres Mimosa et Acacia
+
+fruits sucrés, nutritifs pour le bétail
+-
+anglais
+
+
+lukewarm
+
+→ {{c1::tiède}}
+@
+//
+ˈluːkwɔːm
+//
+-
+
+-)
+
+airship, blimp, zeppelin
+@
+blimp → non rigide
+zeppelin → rigide
+ˈzɛpəlɪn
+blɪmp
+@
+ballon dirigeable
+(3)
+-
+anglais
+
+
+quandary
+
+→ {{c1::dilemme}}, {{c1::embarras}}
+@
+/ˈkwɒndəri/
+-
+-)
+halter
+@
+/ˈhɔltɚ/
+ça veut aussi dire un dos nu (vêtement féminin)
+@
+licol (cheval)
+@
+ou : licou
+-
+-)
+
+
+feeler
+@
+aussi : sonde / capteur
+@
+antenne (d· insecte)
+-
+<img src="
+capture_02_11_2025_17_37_18.png
+" />
+
+(position de yoga)@apanasana
+-
+
+
+
+
+anglais
+
+pedagogical :
+
+
+/{{c1::
+ˌpɛdəˈgɒdʒɪkəl
+}}/
+
+-
+--
+<img src="
+capture_06_11_2025_17_27_44.png
+" />
+
+(commande)@tree
+-
+--
+● git stash {{c1::list}} → lister
+
+● git stash {{c1::drop}} → supprimer le dernier
+
+● git stash {{c1::clear}} → tout supprimer
+-
+
+application web monopage
+
+= {{c1::single-page application::anglais}} = {{c1::SPA::abréviation}}
+
+@une seule [page / lien]
+
+mettre à jour dynamiquement certains éléments avec JavaScript
+-
+
+{{c1::1972::année}}
+
+→ Pong (jeu)
+@rebond sur une <b>canne</b>
+-
+
+
+
+
+
+
+
+
+
+
+
+

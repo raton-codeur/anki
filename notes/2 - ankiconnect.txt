@@ -1,0 +1,105 @@
+envoyer des requetes http json en Python
+	fonction ankiconnect
+		import requests
+
+		payload = {
+			"action": action,
+			"version": VERSION,
+			"params": params or {}
+		}
+
+		r = requests.post("http://127.0.0.1:8765", json=payload)
+			"r" -> "response"
+
+			ça lève requests.exceptions.ConnectionError si erreur
+
+		data = r.json()
+			data["result"]
+				ce qu'on renvoie
+			data["error"]
+				si c'est pas null
+					on arrête le programme
+
+actions anki connect
+	deckNames
+		renvoie la liste les decks
+	changeDeck
+		changer des cartes de deck
+	deleteDecks
+		avec ou sans les cartes qu'ils contiennent
+	getDecks
+		ids de cartes -> dans quels decks elles sont
+	modelNames
+		renvoie la liste des nom de types de notes
+	modelFieldNames
+		param :
+			{"modelName": <nom d'un type de notes>}
+
+		ça renvoie la liste des champs du type de note
+
+		exemple
+			ankiconnect("modelFieldNames", {"modelName": "1 - carte"})
+	addNotes
+		ajouter plusieurs notes d'un coup
+			en anglais, on dit que c'est du "batch"
+
+		on peut tester si l'appel va marcher avant
+		avec la fonction canAddNotes
+	updateNoteFields
+		modifiers une note
+
+	addTags, removeTag, getTages
+
+	<-> suspendre des cartes
+		action : suspend / unsuspend
+			suspendre / reprendre une carte à partir de son id
+
+		areSuspended
+			renvoie "la carte est suspendue ?"
+	cardsToNotes
+		id de carte -> id de note
+	deleteNotes
+		à partir d'une liste d'id
+
+	recherche
+		utile pour vérifier les doublons
+
+		param : {"query": <une string de recherche comme dans le browser>}
+
+		guiBrowse
+			ouvrir le browser d'anki
+			avec la recherche
+
+		sans gui
+			findNotes et findCards
+				renvoient une liste d'id
+			notesInfo et cardsInfo
+				id -> info
+
+ankiconnect("addNotes", {"notes": <liste de notes>})
+	ça renvoie une liste
+		un element
+			id de la note créee
+			ou none
+				-> la note n'a pas été créee
+
+la liste de notes
+à fournir à addNotes
+	une note
+	c'est un dictionnaire avec les clés :
+		● "deckName"
+			une string
+
+			le nom du deck
+		● "modelName"
+			une string
+
+			le nom du type de note
+		● "fields"
+			dictionnaire :
+				nom de champs -> valeur
+
+				les nom de champs
+				dépendent directement du type de la note
+
+

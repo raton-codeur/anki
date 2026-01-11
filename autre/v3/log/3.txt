@@ -1,0 +1,134 @@
+-
+
+--
+HTML
+
+
+<script {{c1::defer::mot-clé}} src="main.js"></script>
+
+→ attendre : [lire tout le HTML / DOM prêt]
+-
+
+
+-)
+
+amputee
+@ˌæmpjʊˈti
+@
+amputé
+-
+-)
+visual impairment@ˈvɪʒ.u.əl ɪmˈper.mənt
+@
+déficience visuelle
+-
+
+--
+français
+
+
+partir à {{c1::vau-l’eau::/vo.l‿o/}}
+
+
+@
+→ aller à la dérive.
+
+vau est une ancienne forme de val → vallée.
+
+à vau-l’eau → "au fil de l’eau dans la vallée"
+-
+
+-)
+
+
+déficience intellectuelle
+@
+intellectual disability
+-
+-)
+
+weightlifting, powerlifting
+@
+haltérophilie
+(2)
+-
+anglais
+
+
+disabled sports / para sports / adaptive sports
+
+→ {{c1::handisport}}
+-
+
+-)
+
+disability
+@/ˌdɪsəˈbɪləti/
+@
+handicap
+-
+-)
+
+bench press, chest press
+
+@
+développé couché
+(2)
+-
+<img src="
+capture_24_11_2025_12_25_48.png
+" /> <img src="
+capture_24_11_2025_12_25_57.png
+" />
+
+(chapeau grec)
+@
+
+(un) pétase
+
+
+en feutre ou paille
+
+sourtout pour les voyageurs
+
+-
+christianisme
+
+
+mère
+
+de Marie@Sainte Anne
+-
+latin
+
+
+nec plus ultra
+
+→ {{c1::pas plus au-delà ::st}}
+@
+mythologie :
+sur les colonnes d’Hercule (Gibraltar) (→ « ne va pas plus loin ») → limite du monde connu
+-
+--
+français
+
+
+enfiler un {{c1::pull-over::/py.l‿o.vɛʁ/}}
+@ou : /py.l‿o.vœʁ/
+-
+--
+français
+
+
+une histoire {{c1::invraisemblable::/ɛ̃.vʁɛ.sɑ̃.blabl
+/}}
+-
+
+{{c1::Atari::entreprise}}
+
+→ Pong (jeu)
+-
+
+
+
+

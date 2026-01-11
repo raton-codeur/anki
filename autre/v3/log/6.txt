@@ -1,0 +1,68 @@
+-
+
+
+
+
+
+
+-)
+
+hopscotch
+@
+marelle (jeu enfantin)
+-
+a.out.<span style="color:red;">dSYM</span>
+
+
+dSYM
+
+→ {{c1::debug symbols::st - anglais}}
+-
+({{c1::un::un / une}}) {{c1::choupisson}} :
+
+
+bébé hérisson
+-
+
+
+
+
+--
+C
+
+
+créer [ new :
+
+une copie de [ fd :
+
+un descripteur de fichier ] ]
+
+● avec le premier numéro disponible
+
+● dans le numéro 6
+@
+new = dup(fd);, dup2(fd, 6);
+@
+dup2 ferme automatiquement 6 s'il était ouvert
+-
+
+{{c1::unistd.h ::bibliothèque}}
+
+→ dup, dup2, dup3
+-
+
+
+
+anglais
+
+
+to tamper
+
+→ {{c1::falsifier}}
+-
+
+
+
+
+
+

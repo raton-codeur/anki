@@ -1,0 +1,320 @@
+-
+
+
+
+
+-
+<img src="
+capture_09_12_2025_08_29_25.png
+" />
+
+(autoroutes)@A35 (haut)
+
+A36 (vers Dole)
+-
+
+--
+CSS
+
+
+CDN Tailwind
+
+@
+<script src="https://cdn.tailwindcss.com"></script>@
+Content Delivery Network
+
+version de Tailwind CSS hébergé en ligne
+
+on peut aussi configurer Tailwind dans le script
+-
+--
+CSS
+
+
+apparence d· souris au survol :
+
+"main + doigt"
+@
+cursor: pointer;
+-
+
+--
+JavaScript
+
+
+[ n : un nombre ]
+
+→ string :
+
+● longueur 3
+
+● remplir avec des "0" si besoin
+@
+String(n).padStart(3, "0")
+-
+
+anglais
+
+
+1 {{c1::acre}}
+
+→ quarante ares
+
+≈ 1 demi-hectare@/ˈeɪkər/
+-
+
+<img src="
+capture_10_12_2025_10_48_29.png
+" />
+
+(marque américaine d· [huile / graisse] alimentaire)@Crisco
+
+
+mélange d'huiles de soja et d'huile de palme
+-
+<img src="
+capture_10_12_2025_10_50_40.png
+" />
+
+→ bol de "{{c1::grits::anglais}}"
+@
+≈ porridge de maïs
+
+
+sud des États-Unis
+-
+--
+<img src="
+capture_10_12_2025_10_52_42.png
+" />
+
+(mets amérindien - 2)
+@
+(un) hominy, (un) nixtamal
+@
+grains de maïs séchés et traités à l'aide d'une [ solution alcaline
+
+= (le) lessi = eau de chaux = eau + [ chaux éteinte = hydroxyde de calcium ] ]
+
+
+la traitement s'appelle la nixtamalisation
+
+-
+
+
+---
+● acide carbonique
+
+● bicarbonate
+
+● carbonate
+
+
+@
+
+<img src="
+capture_12_12_2025_15_02_37.png
+" /> <img src="
+capture_11_12_2025_09_51_53.png
+" /> <img src="
+capture_11_12_2025_09_52_30.png
+" />
+
+
+bicarbonate = hydrogénocarbonate
+-
+
+<img src="
+capture_12_12_2025_14_38_47.png
+" /> <img src="
+capture_12_12_2025_14_39_16.png
+" /> <img src="
+capture_12_12_2025_14_39_33.png
+" />
+
+(plante en latin + fruit)@
+cucumis metulifer, kiwano
+
+
+famille des Cucurbitacées
+
+en Afrique et au Yémen
+
+kiwano = gakachika = métulon = melano = concombre cornu d'Afrique = melon à corne
+-
+
+<img src="
+capture_12_12_2025_14_40_21.png
+" />
+
+(plante en latin + fruit)@
+pouteria lucuma, (une) lucuma
+
+
+Pérou
+-
+<img src="
+capture_12_12_2025_14_43_29.png
+" />
+@
+Philippe Conticini
+
+
+chef de cuisine et chef-pâtissier français
+né en 1963
+-
+<img src="
+capture_12_12_2025_14_44_01.png
+" />
+
+(plante en latin + nom générique)@euphorbia pulcherrima, poinsettia
+
+
+originaire d'Amérique centrale et du sud du Mexique
+
+poinsettia : nom du premier ambassadeur des États-Unis au Mexique
+-
+anglais
+
+
+corny
+
+→ {{c1::ringard}}
+@
+≈ cheesy
+mais cheesy → insiste plutôt sur le côté trop sentimental
+et corny → insiste plutôt sur le côté cliché
+-
+anglais
+
+
+hoarder
+
+→ {{c1::accumulateur(trice) compulsif(ve)}}
+-
+anglais
+
+
+antsy
+
+→ {{c1::nerveux / agité}}
+@
+c'est avoir la bougeotte
+
+ne peut pas tenir en place,
+soit par impatience
+ou juste appréhension
+
+exemple : I’m getting antsy — we’ve been waiting for an hour
+-
+
+---
+CO<sub>2</sub> dissout dans l'eau
+
+diagramme H<sub>2</sub>CO<sub>3</sub> - HCO<sub>3</sub><sup>-</sup> - CO<sub>3</sub><sup>2-</sup>
+
+↔︎ pH
+
+(à 25°C)
+@
+<img src="
+capture_12_12_2025_14_58_11.png
+" />
+
+
+● CO<sub>2</sub> (aq) + H<sub>2</sub>O (l) ↔︎ H<sub>2</sub>CO<sub>3</sub> (aq)
+● H<sub>2</sub>CO<sub>3</sub> ↔︎ H<sup>+</sup> + HCO<sub>3</sub><sup>-</sup>
+● HCO<sub>3</sub><sup>-</sup> ↔︎ H<sup>+</sup> + H<sub>2</sub>CO<sub>3</sub><sup>2-</sup>
+-
+-)
+aqueous@/ˈeɪ.kwi.əs/
+@aqueux (chimie)
+
+-
+<img src="
+capture_12_12_2025_15_20_53.png
+" />
+
+[galette / petit pain] de maïs
+
+(anglais)
+@
+corn pone
+
+
+baked or fried
+-
+anglais
+
+
+(to) fib
+
+→ {{c1::petit mensonge}}
+@
+exemple : stop fibbing and tell me the truth
+
+-
+<img src="
+capture_12_12_2025_15_26_48.png
+" /> <img src="
+capture_12_12_2025_15_27_52.png
+" /> <img src="
+capture_12_12_2025_15_28_14.png
+" />
+
+chandelier à plusieurs branches
+
+/ lampadaire ≈ réverbère
+
+@
+(un) candélabre
+
+
+usage vieilli
+
+c'est aussi un motif ornemental d· pilastre· en architecture
+
+en anglais : candelabra /ˌkændɪˈlɑːbrə/
+
+-
+
+
+
+{{c1::gumption::anglais}}
+
+→ débrouillardise / cran / culot
+
+→ "se bouger et oser faire ce qu’il faut"
+
+
+un peu familier / old-fashioned
+
+
+"to have the gumption to" + [verbe]
+@
+/ˈɡʌmpʃən/
+
+-
+
+
+{{c1::in cauda venenum::latin}}
+
+	→ "dans la queue le venin"
+
+	[texte / discours] débutant gentiment
+		→ relâche le lecteur
+	et finissant soudainement
+	sur un ton tranchant / méchant
+-
+
+
+
+
+
+
+
+
+
+
+
+
