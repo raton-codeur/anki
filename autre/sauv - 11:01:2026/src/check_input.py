@@ -1,5 +1,5 @@
-import define
 import pyperclip, re, shutil, os
+from section_transform import *
 
 def check_top(lines) :
 	if not lines :

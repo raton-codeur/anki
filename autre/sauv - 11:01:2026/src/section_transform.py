@@ -1,5 +1,5 @@
 import define
-import re
+import re, pyperclip
 
 def first_split(lines) :
 	# on veut une liste des sections
@@ -70,6 +70,7 @@ def trim_lines(sections) :
 			result[type].append("\n".join([line.rstrip(" \t").lstrip(" ") for line in section.splitlines()]))
 
 	return result
+
 
 def split_fields(sections) :
 	# on veut séparer les champs des sections

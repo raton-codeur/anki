@@ -7,7 +7,7 @@ INPUT_PATH = '/Users/quentinhauuy/Documents/anki/input.txt'
 IMAGES_SRC_DIR = "/Users/quentinhauuy/Downloads"
 IMAGES_DST_DIR = "/Users/quentinhauuy/Library/Application Support/Anki2/Quentin/collection.media"
 
-LOG_DIR = "/Users/quentinhauuy/Documents/anki/logs"
+LOG_DIR = "/Users/quentinhauuy/Documents/anki/log"
 
 MS_OUTPUT_PATH = "/Users/quentinhauuy/Documents/anki/mosalingua_output.txt"
 

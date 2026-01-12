@@ -1,11 +1,13 @@
-import define
 from check_param import check_param
-from check_input import check_top, check_angle_brackets, check_MS, check_Z, check_and_move_images, check_fields
-from section_transform import first_split, trim_lines, split_fields, remove_empty_sections
-from encode import encode
-from utils import print_sections, print_count_cards, delete_notes_by_query, update_logs, reset_input_file
-from output import mosalingua_output, ankiconnect_format, add_anki_notes
+from check_input import *
+import define
+from section_transform import *
+from encode import *
+from print import *
+from output import *
+from ankiconnect import *
 import subprocess
+import send2trash
 
 check_param()
 
@@ -58,8 +60,20 @@ anki_sections = ankiconnect_format(sections)
 mosalingua_output(ms_sections)
 add_anki_notes(anki_sections)
 
-update_logs()
-reset_input_file()
+# mise à jour des logs
+log_9_path = os.path.join(define.LOG_DIR, "9.txt")
+if os.path.exists(log_9_path) :
+    send2trash.send2trash(log_9_path)
+for i in range(8, -1, -1) :
+    a = os.path.join(define.LOG_DIR, f"{i}.txt")
+    b = os.path.join(define.LOG_DIR, f"{i + 1}.txt")
+    if os.path.exists(a) :
+        os.rename(a, b)
+shutil.copy(define.INPUT_PATH, os.path.join(define.LOG_DIR, "0.txt"))
+
+# mise à jour du sas
+with open(define.INPUT_PATH, "w") as f :
+  f.write("-" + "\n" * 20)
 
 # ouverture de l'output de mosalingua
 if ms_sections :

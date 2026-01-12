@@ -1,5 +1,5 @@
 import define
-from utils import ankiconnect
+from ankiconnect import ankiconnect
 
 def mosalingua_output(sections) :
 	# sections : les sections mosalingua

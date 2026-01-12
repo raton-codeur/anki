@@ -1,6 +1,6 @@
+import os, requests
 import define
-from utils import ankiconnect
-import os
+from ankiconnect import ankiconnect
 
 def check_param() :
 	if not os.path.isfile(define.INPUT_PATH) :
