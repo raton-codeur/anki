@@ -5,7 +5,8 @@ arborescence finale
 		version à jour dans ~/code
 
 	dossier Docuemnts/anki
-		ce qu'on ouvre avec vscode quand on ouvre le "sas"
+		ce qu'on ouvre avec vscode quand veut rentrer des cartes
+			raccourci « open_anki »
 
 		notes et dossiers en cours à traiter
 
