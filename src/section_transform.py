@@ -85,7 +85,7 @@ def split_fields(sections) :
         result[type] = []
         nb_fields = define.NB_FIELDS[type]
         for section in sections_ :
-            new = [field.strip("\n\r") for field in re.split(r"(?<!\\)@", section)]
+            new = [field.strip(" \n\r") for field in re.split(r"(?<!\\)@", section)]
             if type == "MS" and len(new) == 2 :
                 new.insert(1, "")
                 new.append("")
@@ -98,11 +98,4 @@ def split_fields(sections) :
     # sections["C1"] = [" a@b ", "blabla", ...]
     # result["C1"] = [["a", "b"], ["blabla", ""], ...]
 
-    return result
-
-def remove_empty_sections(sections_fields) :
-    result = {}
-    for type, sections in sections_fields.items() :
-        sections = [section for section in sections if any(section)]
-        result[type] = sections
     return result

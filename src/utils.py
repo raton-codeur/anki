@@ -14,14 +14,17 @@ def ankiconnect(action, params = None) :
     return data["result"]
 
 def print_sections(sections) :
-    for type, sections in sections.items() :
-        print(f"  {type} : {sections}")
+    for type, sections_ in sections.items() :
+        if sections_ :
+            print(f"  {type} : {sections_}")
 
 def print_count_cards(sections) :
     result = {"1" : 0, "2" : 0, "3" : 0, "MS" : 0}
     result["1"] += len(sections["C1"])
+    result["1"] += len(sections["R1"])
     result["2"] += len(sections["C2"])
     result["3"] += len(sections["C3"])
+    result["3"] += len(sections["R3"])
     result["MS"] += len(sections["MS"])
     for type, deck in (("Z1", "1"), ("Z2", "2"), ("Z3", "3")) :
         for section in sections[type] :
@@ -31,12 +34,6 @@ def print_count_cards(sections) :
         print(f"  {type} : {result[type]}")
     if result["MS"] > 0 :
         print(f"  MS : {result['MS']}")
-
-def delete_notes_by_query(query) :
-        notes_id = ankiconnect("findNotes", {"query": query})
-        if notes_id :
-                ankiconnect("deleteNotes", {"notes": notes_id})
-        print(f"{len(notes_id)} notes supprimées avec anki connect")
 
 def update_logs() :
     log_9_path = os.path.join(define.LOG_DIR, "9.txt")
@@ -52,3 +49,13 @@ def update_logs() :
 def reset_input_file() :
     with open(define.INPUT_PATH, "w") as f :
         f.write("-" + "\n" * 20)
+
+def format_for_ankiconnect(section, type) :
+    # section : une liste de champs encodés.
+    # on veut renvoyer une section formatée pour ankiconnect.
+
+    result = define.ANKI_CONNECT_MODELS[type].copy()
+    result["fields"] = result["fields"].copy()
+    for field_name, value in zip(result["fields"].keys(), section) :
+        result["fields"][field_name] = value
+    return result

@@ -1,5 +1,6 @@
 import define
 import pyperclip, re, shutil, os
+from utils import ankiconnect
 
 def check_top(lines) :
     if not lines :
@@ -139,3 +140,14 @@ def check_fields(sections_fields, sections_raw) :
                 pyperclip.copy(sections_raw[type][i])
                 exit(f"{define.RED}erreur : trou dans le deuxième champ{define.RESET}\n"
                         f"section {type} copiée : {define.YELLOW}{sections_raw[type][i]}{define.RESET}")
+
+def check_can_add_to_anki(sections_anki, sections_anki_raw) :
+    can_add = ankiconnect("canAddNotes", {"notes": sections_anki})
+    # pour chaque note de sections_anki, on a un booléen indiquant si elle peut être ajoutée.
+
+    for can_add_, section, section_raw in zip(can_add, sections_anki, sections_anki_raw):
+        if not can_add_ :
+            pyperclip.copy(section_raw)
+            exit(f"{define.RED}erreur : impossible d'ajouter via anki connect{define.RESET}\n"
+                    f"vérifier les doublons ?\nnote : {section}\n"
+                    f"section copiée : {define.YELLOW}{section_raw}{define.RESET}")

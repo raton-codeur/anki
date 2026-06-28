@@ -1,10 +1,10 @@
 import define
 from check_param import check_param
-from check_input import check_top, check_angle_brackets, check_MS, check_Z, check_and_move_images, check_fields
-from section_transform import first_split, trim_lines, split_fields, remove_empty_sections
+from check_input import check_top, check_angle_brackets, check_MS, check_Z, check_and_move_images, check_fields, check_can_add_to_anki
+from section_transform import first_split, trim_lines, split_fields
 from encode import encode
-from utils import print_sections, print_count_cards, delete_notes_by_query, update_logs, reset_input_file
-from output import mosalingua_output, ankiconnect_format, add_anki_notes
+from utils import print_sections, print_count_cards, update_logs, reset_input_file, format_for_ankiconnect
+from add_notes import add_to_anki, mosalingua_output
 import subprocess
 
 check_param()
@@ -37,28 +37,51 @@ sections_fields = split_fields(sections_raw_trim)
 
 check_fields(sections_fields, sections_raw)
 
-# fin des vérifications.
-# on a plus besoin de sections_raw
+sections_encoded = encode(sections_fields)
+# les sections sont maintenant encodées et toujours appairées avec sections_raw.
 
-sections = remove_empty_sections(sections_fields)
+# il faut :
+#   - vérifier que les sections_encoded peuvent être ajoutées à anki sans erreur (notamment : pas de problème de doublon).
+#   - garder une correspondance entre les sections pour anki et les sections brutes.
+#   - séparer les sections pour mosalingua et les sections pour anki.
 
-sections = encode(sections)
+sections_anki = [] # les sections formatées pour anki connect.
+    # exemple avec C1 = [['a', 'b'], ['c', '']]
+    # → [{'modelName': 'card', 'deckName': '1 - basic', 'fields': {'front': 'a', 'back': 'b'}},
+    # {'modelName': 'card', 'deckName': '1 - basic', 'fields': {'front': 'c', 'back': ''}}]
+sections_anki_raw = [] # les sections brutes correspondantes.
+sections_mosalingua = [] # les sections encodées pour mosalingua.
+sections = {} # toutes les sections, sauf les sections vides.
+
+for type, sections_ in sections_encoded.items() :
+    # sections = sections_encoded[type], c'est une liste de sections du même type.
+    # une section est une liste de champs.
+    # chaque section de sections_encoded[type] est associée à une section brute dans sections_raw[type].
+
+    sections[type] = [] # à remplir
+    for section, section_raw in zip(sections_, sections_raw[type]) :
+        if all(field == "" for field in section):
+            continue
+        if type == "MS" :
+            sections_mosalingua.append(section_raw)
+        else :
+            sections_anki.append(format_for_ankiconnect(section, type))
+            sections_anki_raw.append(section_raw)
+        sections[type].append(section)
+
+# sections_anki, sections_anki_raw, sections_mosalingua et sections sont prêts.
+
+check_can_add_to_anki(sections_anki, sections_anki_raw)
+
+# add_to_anki(sections_anki)
+# if sections_mosalingua :
+#     mosalingua_output(sections_mosalingua)
+# les notes sont maintenant ajoutées à anki et les sections MS sont formatées dans un fichier.
 
 print("sections :")
 print_sections(sections)
 print("count :")
 print_count_cards(sections)
-
-ms_sections = sections.pop("MS")
-if ms_sections :
-    mosalingua_output(ms_sections)
-
-anki_sections = ankiconnect_format(sections)
-# les cartes sont maintenant formattées pour anki connect.
-# exemple avec C1 = [['a', 'b'], ['c', '']]
-# → [{'modelName': 'card', 'deckName': '1 - basic', 'fields': {'front': 'a', 'back': 'b'}},
-# {'modelName': 'card', 'deckName': '1 - basic', 'fields': {'front': 'c', 'back': ''}}]
-add_anki_notes(anki_sections)
 
 # update_logs()
 
@@ -67,22 +90,3 @@ add_anki_notes(anki_sections)
 # # ouverture de l'output de mosalingua
 # if ms_sections :
 #     subprocess.run(["code", define.MS_OUTPUT_PATH])
-
-
-# # from zipfile import ZipFile
-
-# # with ZipFile("test.apkg") as z:
-# #     z.extractall("deck")
-
-# # import sqlite3
-
-# # conn = sqlite3.connect("deck/collection.anki2")
-# # cursor = conn.cursor()
-
-# # cursor.execute("SELECT mid, flds FROM notes")
-
-# # for (mid, fields) in cursor.fetchall():
-# #     fields = fields.split("\x1f")
-# #     print(f"Model ID: {mid}")
-# #     print(f"Fields: {fields}")
-# #     print()
