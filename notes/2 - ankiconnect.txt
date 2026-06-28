@@ -30,7 +30,7 @@ actions anki connect
 	getDecks
 		ids de cartes -> dans quels decks elles sont
 	modelNames
-		renvoie la liste des nom de types de notes
+		renvoie la liste des noms de types de notes
 	modelFieldNames
 		param :
 			{"modelName": <nom d'un type de notes>}
