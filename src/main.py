@@ -63,7 +63,7 @@ for type, sections_ in sections_encoded.items() :
         if all(field == "" for field in section):
             continue
         if type == "MS" :
-            sections_mosalingua.append(section_raw)
+            sections_mosalingua.append(section)
         else :
             sections_anki.append(format_for_ankiconnect(section, type))
             sections_anki_raw.append(section_raw)
@@ -73,9 +73,9 @@ for type, sections_ in sections_encoded.items() :
 
 check_can_add_to_anki(sections_anki, sections_anki_raw)
 
-# add_to_anki(sections_anki)
-# if sections_mosalingua :
-#     mosalingua_output(sections_mosalingua)
+add_to_anki(sections_anki)
+if sections_mosalingua :
+    mosalingua_output(sections_mosalingua)
 # les notes sont maintenant ajoutées à anki et les sections MS sont formatées dans un fichier.
 
 print("sections :")
@@ -83,10 +83,10 @@ print_sections(sections)
 print("count :")
 print_count_cards(sections)
 
-# update_logs()
+update_logs()
 
-# reset_input_file()
+reset_input_file()
 
-# # ouverture de l'output de mosalingua
-# if ms_sections :
-#     subprocess.run(["code", define.MS_OUTPUT_PATH])
+# ouverture de l'output de mosalingua
+if sections_mosalingua :
+    subprocess.run(["code", define.MS_OUTPUT_PATH])

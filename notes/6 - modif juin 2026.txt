@@ -1,5 +1,5 @@
 
-
+revoir css cartes C2... décalage avec photo ?
 
 modifier des cartes
 		● exporter des notes au format apkg
