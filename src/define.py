@@ -2,18 +2,15 @@ RED = "\033[31m"
 YELLOW = "\033[33m"
 RESET = "\033[0m"
 
-# INPUT_PATH = '/Users/quentinhauuy/Documents/anki/input.txt'
-INPUT_PATH = 'input.txt'
+INPUT_PATH = '/Users/quentinhauuy/Documents/anki/input.txt'
+# INPUT_PATH = '/Users/quentinhauuy/code/anki/input.txt'
 
-# IMAGES_SRC_DIR = "/Users/quentinhauuy/Downloads"
-IMAGES_SRC_DIR = 'images'
+IMAGES_SRC_DIR = '/Users/quentinhauuy/Documents/anki/images'
+# IMAGES_SRC_DIR = '/Users/quentinhauuy/code/anki/images'
 IMAGES_DST_DIR = "/Users/quentinhauuy/Library/Application Support/Anki2/Quentin/collection.media"
 
-# LOG_DIR = "/Users/quentinhauuy/Documents/anki/logs"
-TRASH_DIR = "/Users/quentinhauuy/code/anki/trash"
-
-# MS_OUTPUT_PATH = "/tmp/mosalingua_output.txt"
-MS_OUTPUT_PATH = "mosalingua_output.txt"
+TRASH_DIR = "/Users/quentinhauuy/Documents/anki/poubelle/poubelle_du_script"
+# TRASH_DIR = "/Users/quentinhauuy/code/anki/trash"
 
 ANKI_CONNECT_URL = "http://127.0.0.1:8765"
 ANKI_CONNECT_VERSION = 6

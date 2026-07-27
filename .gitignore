@@ -4,8 +4,6 @@ __pycache__/
 uv.lock
 pyproject.toml
 
-logs/
 input.txt
-mosalingua_output.txt
 images/
 trash/

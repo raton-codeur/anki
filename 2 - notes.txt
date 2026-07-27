@@ -1,6 +1,9 @@
 
-revoir css
-	cartes C2 : décalage avec photo ?
+revoir la config
+
+revoir et sauvegarder les params
+
+relire le man
 
 dimensionner automatiquement les images
 	pas de taille donnée → on essaie de remplir la carte sans dépasser
@@ -11,3 +14,13 @@ revoir le man
 	fonctionnement du height
 
 mettre dans trash les images non utilisées
+
+reprendre les cartes de type obsolète (replace et vrai/faux)
+
+reprendre les cartes dans "traitements"
+
+reprendre les cartes "place dans l'alphabet"
+et "échecs"
+pour avoir des images bien dimensionnées
+
+

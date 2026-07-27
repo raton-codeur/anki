@@ -1,7 +1,7 @@
-
 all : .venv
 	@ printf "\033c"
-	uv run src/main.py
+	@ echo "--- script pour anki ---"
+	@ uv run src/main.py
 
 .venv :
 	uv init --bare
