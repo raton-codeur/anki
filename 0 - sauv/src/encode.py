@@ -55,6 +55,11 @@ def encode(sections) :
                     lambda m: f"LEFT_ANGLE_BRACKETbRIGHT_ANGLE_BRACKET{m.group(1).strip()}LEFT_ANGLE_BRACKET/bRIGHT_ANGLE_BRACKET",
                     section[i]
                 )
+                section[i] = re.sub(
+                    define.FORMATS["shade"],
+                    lambda m: f'LEFT_ANGLE_BRACKETdiv style="background-color: rgba(0, 0, 0, 0.1);"RIGHT_ANGLE_BRACKET{m.group(1).strip()}LEFT_ANGLE_BRACKET/divRIGHT_ANGLE_BRACKET',
+                    section[i]
+                )
 
                 # encoder les "<" et ">"
                 # et rétablir ceux des balises

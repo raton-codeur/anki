@@ -1,9 +1,11 @@
-venv/
+.venv/
 __pycache__/
 .DS_Store
+uv.lock
+pyproject.toml
 
-deck/
 logs/
 input.txt
 mosalingua_output.txt
-test.apkg
+images/
+trash/

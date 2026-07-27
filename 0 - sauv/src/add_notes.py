@@ -11,13 +11,13 @@ def add_to_anki(sections) :
                 f"\t{define.YELLOW}{section['fields']}{define.RESET}\n"
                 f"il faut ouvrir le dernier fichier de log.")
 
-def mosalingua_output(sections):
-    # sections : les sections MosaLingua
-    with open(define.INPUT_PATH, "a", encoding="utf-8") as f:
-        for section in sections:
-            for champ in section:
-                if champ == "":
+def mosalingua_output(sections) :
+    # sections : les sections mosalingua
+    with open(define.MS_OUTPUT_PATH, "w", encoding="utf-8") as f :
+        for section in sections :
+            for champ in section :
+                if champ == "" :
                     f.write("<p></p>\n")
-                else:
+                else :
                     f.write(champ + "\n")
             f.write("-\n")

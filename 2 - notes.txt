@@ -1,0 +1,13 @@
+
+revoir css
+	cartes C2 : décalage avec photo ?
+
+dimensionner automatiquement les images
+	pas de taille donnée → on essaie de remplir la carte sans dépasser
+
+avertissement si on fait une carte trop longue
+
+revoir le man
+	fonctionnement du height
+
+mettre dans trash les images non utilisées

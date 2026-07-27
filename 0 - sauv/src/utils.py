@@ -35,46 +35,20 @@ def print_count_cards(sections) :
     if result["MS"] > 0 :
         print(f"  MS : {result['MS']}")
 
-def update_input_trash() :
-    log_9_path = os.path.join(define.TRASH_DIR, "9.txt")
+def update_logs() :
+    log_9_path = os.path.join(define.LOG_DIR, "9.txt")
     if os.path.exists(log_9_path) :
-        send2trash.send2trash(log_9_path)
+            send2trash.send2trash(log_9_path)
     for i in range(8, -1, -1) :
-        a = os.path.join(define.TRASH_DIR, f"{i}.txt")
-        b = os.path.join(define.TRASH_DIR, f"{i + 1}.txt")
-        if os.path.exists(a) :
-            os.rename(a, b)
-    shutil.copy(define.INPUT_PATH, os.path.join(define.TRASH_DIR, "0.txt"))
-
-def update_anki_trash():
-    ids = ankiconnect("findNotes",
-        {"query": f'deck:"{define.TRASH_DECK}"'}
-    )
-    if not ids :
-        return
-    print(f"{len(ids)} notes retirées d'Anki")
-
-    log_9_path = os.path.join(define.TRASH_DIR, "9.apkg")
-    if os.path.exists(log_9_path) :
-        send2trash.send2trash(log_9_path)
-    for i in range(8, -1, -1):
-        a = os.path.join(define.TRASH_DIR, f"{i}.apkg")
-        b = os.path.join(define.TRASH_DIR, f"{i + 1}.apkg")
-        if os.path.exists(a):
-            os.rename(a, b)
-
-    ankiconnect("exportPackage", {
-        "deck": define.TRASH_DECK,
-        "path": os.path.join(define.TRASH_DIR, "0.apkg")
-    })
-
-    ankiconnect("deleteNotes",
-        {"notes": ids}
-    )
+            a = os.path.join(define.LOG_DIR, f"{i}.txt")
+            b = os.path.join(define.LOG_DIR, f"{i + 1}.txt")
+            if os.path.exists(a) :
+                    os.rename(a, b)
+    shutil.copy(define.INPUT_PATH, os.path.join(define.LOG_DIR, "0.txt"))
 
 def reset_input_file() :
     with open(define.INPUT_PATH, "w") as f :
-        f.write("-\n")
+        f.write("-" + "\n" * 20)
 
 def format_for_ankiconnect(section, type) :
     # section : une liste de champs encodés.

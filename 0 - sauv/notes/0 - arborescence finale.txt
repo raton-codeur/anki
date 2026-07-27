@@ -4,7 +4,7 @@ arborescence finale
 
 		version à jour dans ~/code
 
-	dossier Docuemnts/anki
+	dossier Documents/anki
 		ce qu'on ouvre avec vscode quand veut rentrer des cartes
 			raccourci « open_anki »
 
@@ -12,7 +12,9 @@ arborescence finale
 
 		input.txt
 
+		dossier images
+
 		makefile
 			copie du repo
 
-		dossier log
+		dossier des logs

@@ -48,7 +48,7 @@ actions anki connect
 	updateNoteFields
 		modifiers une note
 
-	addTags, removeTag, getTages
+	addTags, removeTag, getTags
 
 	<-> suspendre des cartes
 		action : suspend / unsuspend

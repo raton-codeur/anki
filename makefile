@@ -1,9 +1,12 @@
-all : /Users/quentinhauuy/code/anki/venv
-	@ printf "\033c"
-	@ /Users/quentinhauuy/code/anki/venv/bin/python /Users/quentinhauuy/code/anki/src/main.py
 
-/Users/quentinhauuy/code/anki/venv :
-	python3 -m venv /Users/quentinhauuy/code/anki/venv && /Users/quentinhauuy/code/anki/venv/bin/pip install -r /Users/quentinhauuy/code/anki/requirements.txt
+all : .venv
+	@ printf "\033c"
+	uv run src/main.py
+
+.venv :
+	uv init --bare
+	uv add requests pyperclip send2trash
 
 clean :
-	rm -rf /Users/quentinhauuy/code/anki/venv /Users/quentinhauuy/code/anki/src/__pycache__
+	rm -rf .venv uv.lock pyproject.toml
+	find . -name __pycache__ -exec rm -rf {} +
