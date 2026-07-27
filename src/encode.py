@@ -1,13 +1,13 @@
 import define
 import re
 
-def encode(sections) :
+def encode(sections):
     # sections : le dictionnaire des sections à encoder
     # renvoie le dictionnaire des sections encodées
 
-    for sections_ in sections.values() :
-        for section in sections_ :
-            for i in range(len(section)) :
+    for sections_ in sections.values():
+        for section in sections_:
+            for i in range(len(section)):
 
                 # trimer les textes phonétiques et encoder les "//"
                 section[i] = re.sub(

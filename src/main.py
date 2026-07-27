@@ -1,18 +1,25 @@
-from utils import ankiconnect
 import define
 from check_param import check_param
 from check_input import check_top, check_angle_brackets, check_MS, check_Z, check_and_move_images, check_fields
 from section_transform import first_split, trim_lines, split_fields
 from encode import encode
-from final import get_final, check_can_add_to_anki
-from utils import print_sections, print_count_cards, update_input_trash, reset_input_file, update_anki_trash
-from add_notes import add_to_anki, mosalingua_output
-import subprocess
+from final_add import get_final_sections, check_can_add_to_anki, add_to_anki, mosalingua_output
+from utils import (
+    print_sections,
+    print_count_cards,
+    update_input_trash,
+    reset_input_file,
+    reset_img_dir,
+    get_trashed_cards,
+    update_anki_trash,
+    open_input_in_vscode
+)
+from handle_marked import get_marked_cards, decode_notes, get_back_images, backfill_input, move_marked_cards
 
 check_param()
 
 # ouvrir, retirer les white spaces de début et fin, split lines
-with open(define.INPUT_PATH, "r", encoding="utf-8") as f :
+with open(define.INPUT_PATH, "r", encoding="utf-8") as f:
     lines = f.read().strip().splitlines()
 
 check_top(lines)
@@ -42,7 +49,7 @@ check_fields(sections_fields, sections_raw)
 sections_encoded = encode(sections_fields)
 # les sections sont maintenant encodées et toujours appairées avec sections_raw.
 
-sections_anki, sections_anki_raw, sections_mosalingua, sections = get_final(sections_encoded, sections_raw)
+sections_anki, sections_anki_raw, sections_mosalingua, sections = get_final_sections(sections_encoded, sections_raw)
 # sections_anki : les sections formatées pour anki connect.
     # exemple avec C1 = [['a', 'b'], ['c', '']]
     # → [{'modelName': 'card', 'deckName': '1 - basic', 'fields': {'front': 'a', 'back': 'b'}},
@@ -51,105 +58,46 @@ sections_anki, sections_anki_raw, sections_mosalingua, sections = get_final(sect
 # sections_mosalingua : les sections encodées pour mosalingua.
 # sections : toutes les sections, sauf les sections vides.
 
-# check_can_add_to_anki(sections_anki, sections_anki_raw)
+check_can_add_to_anki(sections_anki, sections_anki_raw)
+add_to_anki(sections_anki)
+# les notes sont maintenant ajoutées à anki.
 
 update_input_trash()
 reset_input_file()
+reset_img_dir()
+# l'input a été archivée dans la corbeille et remise à 0.
+# le dossier des images a été vidé.
 
-add_to_anki(sections_anki)
 mosalingua_output(sections_mosalingua)
-# les notes sont maintenant ajoutées à anki et les sections MS sont formatées dans un fichier.
+# les sections MS sont maintenant formatées dans l'input.
 
-print("ajouté :")
-# print_sections(sections)
-print_count_cards(sections)
+if (any(sections.values())):
+    print("ajouté :")
+    # print_sections(sections)
+    print_count_cards(sections)
 
-marked_cards_ids = ankiconnect(
-    "findCards",
-    {"query": "tag:marked"}
-)
-
-def get_separator(model, deck):
-    if deck in (define.DECK_1, define.DECK_2, define.DECK_3):
-        return define.GET_SEPARATOR[(model, deck)]
-    elif model == define.MODEL_TAPE or model == define.MODEL_CLOZE_TAPE:
-        return "--"
-    else:
-        return define.GET_SEPARATOR[(model, define.DECK_1)]
-
-def get_marked(marked_cards_ids):
-    cards = ankiconnect(
-        "cardsInfo",
-        {"cards": marked_cards_ids}
-    )
-    note_ids = set()
-    notes = []
-    for card in cards:
-        if card["note"] in note_ids:
-            continue
-        note_ids.add(card["note"])
-        notes.append({
-            "separator": get_separator(card["modelName"], card["deckName"]),
-            "fields": [
-                field["value"]
-                for field in sorted(
-                    card["fields"].values(),
-                    key=lambda f: f["order"]
-                )
-            ]
-        })
-    return list(note_ids), notes
-marked_notes_ids, marked_notes = get_marked(marked_cards_ids)
-# marked_notes est une liste de dictionnaires
+marked_card_ids, marked_note_ids, marked_notes = get_marked_cards()
+# marked_notes est une liste de dictionnaires des cartes marquées sur Anki
 # dont les clés sont : separator, fields
-
-import re
-def decode(s):
-    s = s.replace("&nbsp;&nbsp;&nbsp;&nbsp;", '\t')
-    s = s.replace("&nbsp;", ' ')
-    s = s.replace("<br>", '\n')
-    s = s.replace("&lt;", "<")
-    s = s.replace("&gt;", ">")
-    s = s.replace("@", r"\@")
-    s = re.sub(define.FORMATS["decode_img"], r"<img>\1</img>", s)
-    s = re.sub(define.FORMATS["decode_red"], r"<red>\1</red>", s)
-    return s
-
-def decode_notes(notes):
-    for note in notes:
-        note["fields"] = [decode(field) for field in note["fields"]]
-    return notes
-
-marked_notes = decode_notes(marked_notes)
-
-import shutil, os
-def move_imgs(notes):
-    for note in notes:
-        for field in note["fields"]:
-            images = re.findall(define.FORMATS["img"], field)
-            for height, name in images :
-                name_dst = os.path.join(define.IMAGES_DST_DIR, name)
-                name_src = os.path.join(define.IMAGES_SRC_DIR, name)
-                shutil.move(name_dst, name_src)
-
-move_imgs(marked_notes)
-
-output = []
-for note in marked_notes :
-    output.append(note["separator"])
-    output.append("\n@\n".join(note["fields"]))
-
-with open(define.INPUT_PATH, "a") as f:
-    f.write("\n".join(output))
-
 if marked_notes:
-    ankiconnect("changeDeck", {
-            "cards": marked_cards_ids,
-            "deck": define.TRASH_DECK
-        }
-    )
     print(f"{len(marked_notes)} notes récupérées")
 
-update_anki_trash()
+    marked_notes = decode_notes(marked_notes)
+    # les notes marquées sont maintenant décodées.
 
-subprocess.run(["code", "-g", f"{define.INPUT_PATH}:2"])
+    get_back_images(marked_notes)
+    # on a récupéré les images des cartes marquées.
+
+    backfill_input(marked_notes)
+    # on a récupéré les cartes marquées dans l'input.
+
+    move_marked_cards(marked_card_ids)
+
+trashed_note_ids = get_trashed_cards()
+if trashed_note_ids:
+    print(f"{len(trashed_note_ids)} notes retirées d'Anki")
+
+    update_anki_trash(trashed_note_ids)
+    # la poubelle d'Anki a été vidée.
+
+open_input_in_vscode()

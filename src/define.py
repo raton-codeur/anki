@@ -51,42 +51,42 @@ NB_FIELDS = {
 }
 
 ANKI_CONNECT_MODELS = {
-    "C1" : {
+    "C1": {
         "modelName": MODEL_CARD,
         "deckName": DECK_1,
         "fields": dict.fromkeys(MODEL_CARD_FIELDS, "")
     },
-    "C2" : {
+    "C2": {
         "modelName": MODEL_TAPE,
         "deckName": DECK_2,
         "fields": dict.fromkeys(MODEL_TAPE_FIELDS, "")
     },
-    "C3" : {
+    "C3": {
         "modelName": MODEL_CARD,
         "deckName": DECK_3,
         "fields": dict.fromkeys(MODEL_CARD_FIELDS, "")
     },
-    "R1" : {
+    "R1": {
         "modelName": MODEL_REPLACE,
         "deckName": DECK_1,
         "fields": dict.fromkeys(MODEL_REPLACE_FIELDS, "")
     },
-    "R3" : {
+    "R3": {
         "modelName": MODEL_REPLACE,
         "deckName": DECK_3,
         "fields": dict.fromkeys(MODEL_REPLACE_FIELDS, "")
     },
-    "Z1" : {
+    "Z1": {
         "modelName": MODEL_CLOZE,
         "deckName": DECK_1,
         "fields": dict.fromkeys(MODEL_CLOZE_FIELDS, ""),
     },
-    "Z2" : {
+    "Z2": {
         "modelName": MODEL_CLOZE_TAPE,
         "deckName": DECK_2,
         "fields": dict.fromkeys(MODEL_CLOZE_TAPE_FIELDS, "")
     },
-    "Z3" : {
+    "Z3": {
         "modelName": MODEL_CLOZE,
         "deckName": DECK_3,
         "fields": dict.fromkeys(MODEL_CLOZE_FIELDS, "")
@@ -96,14 +96,14 @@ ANKI_CONNECT_MODELS = {
 SEPARATORS = '-', '--', '---', '-)', '-r', '---r'
 
 GET_SEPARATOR = {
-    (MODEL_CARD, DECK_1) : "-", # C1
-    (MODEL_TAPE, DECK_2) : "--", # C2
-    (MODEL_CARD, DECK_3) : "---", # C3
-    (MODEL_REPLACE, DECK_1) : "-r", # R1
-    (MODEL_REPLACE, DECK_3) : "---r", # R3
-    (MODEL_CLOZE, DECK_1) : "-", # Z1
-    (MODEL_CLOZE_TAPE, DECK_2) : "--", # Z2
-    (MODEL_CLOZE, DECK_3) : "---" # Z3
+    (MODEL_CARD, DECK_1): "-", # C1
+    (MODEL_TAPE, DECK_2): "--", # C2
+    (MODEL_CARD, DECK_3): "---", # C3
+    (MODEL_REPLACE, DECK_1): "-r", # R1
+    (MODEL_REPLACE, DECK_3): "---r", # R3
+    (MODEL_CLOZE, DECK_1): "-", # Z1
+    (MODEL_CLOZE_TAPE, DECK_2): "--", # Z2
+    (MODEL_CLOZE, DECK_3): "---" # Z3
 }
 
 # nom d'un format -> regex
@@ -115,8 +115,8 @@ FORMATS = {
     "sup": r"<sup>([\s\S]*?)</sup>",
     "sub": r"<sub>([\s\S]*?)</sub>",
     "b": r"<b>([\s\S]*?)</b>",
-    "cloze" : r"\{\{c(\d+)::([\s\S]*?)(?:::([\s\S]*?))?\}\}", # ["numéro", "champ principal", "champ d'indice" (ou None)]
-    "phonetics" : r'(?<!\\)//([\s\S]*?)(?<!\\)//'
+    "cloze": r"\{\{c(\d+)::([\s\S]*?)(?:::([\s\S]*?))?\}\}", # ["numéro", "champ principal", "champ d'indice" (ou None)]
+    "phonetics": r'(?<!\\)//([\s\S]*?)(?<!\\)//'
 }
 
 LINE_HEIGHT = 36 # line-height en pixels dans le CSS des cartes
