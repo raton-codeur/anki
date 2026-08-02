@@ -14,7 +14,7 @@ def decode(s):
 def get_songs() :
     card_ids = ankiconnect(
         "findCards",
-        {"query": f'deck:extern::song is:due'}
+        {"query": f'deck:extern::song (is:due OR is:new)'}
     )
     cards = ankiconnect(
         "cardsInfo",
