@@ -51,16 +51,17 @@ def add():
     add_to_anki(sections_anki)
     # les notes sont maintenant ajoutées à anki.
 
-    update_input_trash()
-    reset_input_file()
     reset_img_dir()
-    # l'input a été archivée dans la corbeille et remise à 0.
     # le dossier des images a été vidé.
-
-    mosalingua_output(sections_mosalingua)
-    # les sections MS sont maintenant formatées dans l'input.
-
+    
     if (any(sections.values())):
+        update_input_trash()
+        reset_input_file()
+        # l'input a été archivée dans la corbeille et remise à 0.
+
+        mosalingua_output(sections_mosalingua)
+        # les sections MS sont maintenant formatées dans l'input.
+
         print("ajouté :")
         # print_sections(sections)
         print_count_cards(sections)

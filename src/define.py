@@ -1,13 +1,16 @@
-dev = 1
+from pathlib import Path
 
-if dev:
-    INPUT_PATH = '/Users/quentinhauuy/code/anki_dev/input.txt'
-    IMAGES_SRC_DIR = '/Users/quentinhauuy/code/anki_dev/images'
-    TRASH_DIR = "/Users/quentinhauuy/code/anki_dev/trash"
-else:
-    INPUT_PATH = '/Users/quentinhauuy/Documents/anki/input.txt'
-    IMAGES_SRC_DIR = '/Users/quentinhauuy/Documents/anki/images'
-    TRASH_DIR = "/Users/quentinhauuy/Documents/anki/trash"
+def setup(env):
+    global INPUT_PATH, IMAGES_SRC_DIR, TRASH_DIR
+
+    if env == "dev":
+        base_dir = Path("/Users/quentinhauuy/code/anki_dev")
+    else:
+        base_dir = Path("/Users/quentinhauuy/Documents/anki")
+
+    INPUT_PATH = base_dir / "input.txt"
+    IMAGES_SRC_DIR = base_dir / "images"
+    TRASH_DIR = base_dir / "trash"
 
 IMAGES_DST_DIR = "/Users/quentinhauuy/Library/Application Support/Anki2/Quentin/collection.media"
 
@@ -16,7 +19,7 @@ SPOTIFY_CLIENT_SECRET = "713431dadce14f2a972e35a713caf19c"
 
 SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8888/callback"
 SPOTIFY_SCOPE = "playlist-read-private playlist-modify-private"
-SPOTIFY_TOKEN_FILE = "spotify_token.json"
+SPOTIFY_TOKEN_FILE = "/Users/quentinhauuy/code/anki/spotify_token.json"
 
 RED = "\033[31m"
 YELLOW = "\033[33m"

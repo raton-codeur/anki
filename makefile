@@ -1,13 +1,20 @@
-ENV ?= dev
+dev : .venv print
+	@ uv run src/main.py --env dev
 
-all : .venv print
-	@ ANKI_ENV=$(ENV) uv run src/main.py
+dev-add : .venv print
+	@ uv run src/main.py --env dev --only add
 
-add : .venv print
-	@ ANKI_ENV=$(ENV) uv run src/main.py add
+dev-get : .venv print
+	@ uv run src/main.py --env dev --only get
 
-get : .venv print
-	@ ANKI_ENV=$(ENV) uv run src/main.py get
+prod : .venv print
+	@ uv run src/main.py --env prod
+
+prod-add : .venv print
+	@ uv run src/main.py --env prod --only add
+
+prod-get : .venv print
+	@ uv run src/main.py --env prod --only get
 
 print:
 	@ printf "\033c"
@@ -21,4 +28,4 @@ clean :
 	rm -rf .venv uv.lock pyproject.toml spotify_token.json
 	find . -name __pycache__ -exec rm -rf {} +
 
-.PHONY: all add get print clean
+.PHONY: dev dev-add dev-get prod prod-add prod-get print clean
