@@ -1,17 +1,17 @@
-all : .venv
-	@ printf "\033c"
-	@ echo "--- script pour anki ---"
-	@ uv run src/main.py
+ENV ?= dev
 
-add : .venv
-	@ printf "\033c"
-	@ echo "--- script pour anki ---"
-	@ uv run src/main.py add
+all : .venv print
+	@ ANKI_ENV=$(ENV) uv run src/main.py
 
-get : .venv
+add : .venv print
+	@ ANKI_ENV=$(ENV) uv run src/main.py add
+
+get : .venv print
+	@ ANKI_ENV=$(ENV) uv run src/main.py get
+
+print:
 	@ printf "\033c"
 	@ echo "--- script pour anki ---"
-	@ uv run src/main.py get
 
 .venv :
 	uv init --bare
@@ -20,3 +20,5 @@ get : .venv
 clean :
 	rm -rf .venv uv.lock pyproject.toml spotify_token.json
 	find . -name __pycache__ -exec rm -rf {} +
+
+.PHONY: all add get print clean
