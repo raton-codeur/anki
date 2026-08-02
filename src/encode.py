@@ -32,7 +32,7 @@ def encode(sections):
                 # on remplace temporairement les "<" et ">" des balises.
                 section[i] = re.sub(
                     define.FORMATS["img"],
-                    lambda m: f'LEFT_ANGLE_BRACKETimg src="{m.group(2).strip()}" style="height: {int(m.group(1) or define.DEFAULT_IMG_HEIGHT) * define.LINE_HEIGHT}px;"RIGHT_ANGLE_BRACKET',
+                    lambda m: f'LEFT_ANGLE_BRACKETimg src="{m.group(2).strip()}" style="height: {int(m.group(1)) * define.LINE_HEIGHT}px;"RIGHT_ANGLE_BRACKET',
                     section[i]
                 )
                 section[i] = re.sub(
@@ -53,6 +53,11 @@ def encode(sections):
                 section[i] = re.sub(
                     define.FORMATS["b"],
                     lambda m: f"LEFT_ANGLE_BRACKETbRIGHT_ANGLE_BRACKET{m.group(1).strip()}LEFT_ANGLE_BRACKET/bRIGHT_ANGLE_BRACKET",
+                    section[i]
+                )
+                section[i] = re.sub(
+                    define.FORMATS["link"],
+                    lambda m: f"LEFT_ANGLE_BRACKETa href=\"{m.group(1).strip()}\"RIGHT_ANGLE_BRACKETlinkLEFT_ANGLE_BRACKET/aRIGHT_ANGLE_BRACKET",
                     section[i]
                 )
 

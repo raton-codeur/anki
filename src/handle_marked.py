@@ -3,14 +3,14 @@ import define
 from utils import ankiconnect
 
 def get_separator(model, deck):
-    if deck in (define.DECK_1, define.DECK_2, define.DECK_3):
+    if deck in (define.DECK_BASE, define.DECK_TAPER, define.DECK_PAPIER, define.DECK_SONG):
         return define.GET_SEPARATOR[(model, deck)]
     elif model == define.MODEL_TAPE or model == define.MODEL_CLOZE_TAPE:
         return "--"
     else:
-        return define.GET_SEPARATOR[(model, define.DECK_1)]
+        return define.GET_SEPARATOR.get((model, define.DECK_BASE), "-")
 
-def get_marked_cards():
+def get_marked():
     card_ids = ankiconnect(
         "findCards",
         {"query": "tag:marked"}
@@ -37,7 +37,7 @@ def get_marked_cards():
                 )
             ]
         })
-    return card_ids, list(note_ids), notes
+    return card_ids, notes
 
 def decode(s):
     """s : un champ récupéré d'anki.
@@ -48,8 +48,9 @@ def decode(s):
     s = s.replace("<br>", '\n')
     s = s.replace("&lt;", "<").replace("&gt;", ">")
     s = s.replace("@", r"\@")
-    s = re.sub(define.FORMATS["decode_img"], r"<img>\1</img>", s)
+    s = re.sub(define.FORMATS["decode_img"], r"<img h=10\n\1>", s)
     s = re.sub(define.FORMATS["decode_red"], r"<red>\1</red>", s)
+    s = re.sub(define.FORMATS["decode_link"], r"<link:\1>", s)
     return s
 
 def decode_notes(notes):
@@ -62,14 +63,13 @@ def get_back_images(notes):
     du dossier images d'Anki au dossier source des images du script."""
     for note in notes:
         for field in note["fields"]:
-            images = re.findall(define.FORMATS["img"], field)
-            for height, name in images :
+            for _, name in re.findall(define.FORMATS["img"], field) :
                 name_dst = os.path.join(define.IMAGES_DST_DIR, name)
                 name_src = os.path.join(define.IMAGES_SRC_DIR, name)
                 shutil.move(name_dst, name_src)
 
 def backfill_input(notes):
-    data = [] # à écrire dans l'input
+    data = [] # ce qu'on va écrire dans le fichier
     for note in notes :
         data.append(note["separator"])
         data.append("\n@\n".join(note["fields"]))
@@ -81,6 +81,6 @@ def backfill_input(notes):
 def move_marked_cards(card_ids):
     ankiconnect("changeDeck", {
             "cards": card_ids,
-            "deck": define.TRASH_DECK
+            "deck": define.DECK_POUBELLE
         }
     )

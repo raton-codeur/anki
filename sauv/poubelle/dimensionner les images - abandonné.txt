@@ -1,0 +1,237 @@
+dimensionner les images
+
+	hauteur max : 22
+
+	une image par défaut + 1 trait + 1 réponse
+		hauteur : 13
+
+	si une carte a des images
+
+		si la carte n'a qu'une seule image qui n'a pas de taille donnée
+		et si la hauteur finale calculée est <= 13
+			nouvelle hauteur par défaut pour l'image : 13
+
+		tant que la hauteur finale calculée dépasse 22
+		mais tant que la hauteur par défaut des images est au moins 2 :
+			diminuer de 1 la hauteur par défaut des images
+
+calculer la hauteur d'une carte selon le modèle
+	calcul si y'a des images dans une section
+		pour chaque ligne qui contient des images
+			on note "h" la hauteur de la plus grande image de la ligne
+			la hauteur augmente de "h - 1"
+
+		appelons ça le nb+images d'une section
+
+	card
+		nb+images du front + 1 (pour la ligne de séparation) + nb+images du back
+
+		C1, C3
+	replace front
+		nb+images du front
+
+		R1, R3
+	replace back
+		nb+images du back
+
+		R1, R3
+	cloze sans extra
+		nb+images du text
+
+		Z1, Z3
+	cloze avec extra
+		nb+images du text + 1 (pour la ligne de séparation) + nb+images de l'extra
+
+		Z1, Z3
+	tapé sans extra
+		nb+images du front + 3 (pour la saisie)
+
+		C2
+	tapé avec extra
+		nb+images du front + 3 (pour la saisie) + nb+images de l'extra
+
+		C2
+	cloze tapé sans extra
+		nb+images du text + 3 (pour la saisie)
+
+		Z2
+	cloze tapé avec extra
+		nb+images du text + 3 (pour la saisie) + nb+images de l'extra
+
+		Z2
+
+	appelons ça le "parcours p"
+
+réfléxion
+	où mettre la gestion des images dans notre code ?
+
+	une fois que tous les checks sont passés,
+	on a :
+	sections_encoded
+		dictionnaire
+			clés : "C1", "C2", "C3", "Z1", "Z2", "Z3", "R1", "R3", "MS"
+			valeur
+				liste de notes
+			1 note
+					liste de champs
+
+			exemple
+				sections_encoded["C1"] = [["a", "b"], ["c", "d"]]
+
+	on peut faire la fonction qui calcule la hauteur nb+images d'une liste donnée de champs.
+	disons "get_heights" et "get_height" pour un seul champs.
+
+	on peut pas travailler sur les heights calculés en pixels des images
+	parce que on sait pas si c'est une taille par défaut ou pas.
+	donc faut calculer get_height avant l'encodage.
+
+	faudrait se mettre dans "encode", quand on gère les balises img.
+	non, encode, ça veut dire ce que ça veut dire.
+	il faudrait faire ça avant, juste après check fields.
+	une fonction genre "ajuster la hauteur".
+	juste avant, on aura besoin de calculer les hauteurs.
+
+	pour qu'on ait la taille calculée au moment d'ajuster la hauteur,
+	je propose qu'on associe chaque note à sa hauteur calculée
+	dans une sorte de surcouche temporaire :
+		sections_encoded
+			clés : "C1", "C2", "C3", "Z1", "Z2", "Z3", "R1", "R3", "MS"
+			valeur : liste de tuples
+			un tuple : liste de notes comme précédemment, hauteur calculée pour la note
+
+	fonction qui ajoute les hauteurs
+		param : sections_encoded
+			disons "s"
+		retour : sections_encoded temporaire avec les hauteurs
+
+		pour chaque note de s["C1"] et s["C3"]
+			résultat = get_heights des champs de la carte + 1
+		on duplique les s[R1] et s[r3] → s[R1front], s[R3back], etc
+		pour chaque note de s["...
+
+	j'ai eu une idée pas mal :
+	on a une premiere fonction qui ajoute les hauteurs front, back de toutes les cartes.
+	disons "get_front_back_heights".
+	param : sections_encoded
+	retour : sections_encoded temporaire enrichis avec un tuple (hauteur front, hauteur back)
+
+	ensuite on a la fonction qui remplace ces hauteurs
+	par la hauteur front+back,
+	sauf pour les sections R évidemment.
+		pour s[C1], s[C3]
+			somme + 1
+		pour s[C2]
+			sans extra
+				...
+			avec extra
+		pour s[Z1], s[Z3]
+			sans extra
+			avec extra
+
+	c'est la que je réalise que tout ce que je fais,
+	non seulement c'est compliqué,
+	et en plus ça va forcément être imprécis de ouf...
+	rien que pour les cartes C2 :
+	rien ne garantit que la ligne du back tiendra sur une ligne.
+	et rien ne garantit qu'on aura pas une ligne avec 5 images
+	qui vont déborder sur la ligne du dessous.
+
+	faut qu'on aille à l'essentiel.
+
+	on reprend. on est après check fields.
+	"s", c'est nos sections fields.
+
+	on ajoute la hauteur calculée selon le type
+		c1
+			hauteur du front + back + 1
+
+			appelons ça le "calcul c1"
+		c2
+			"calcul z1" + 3
+		c3
+			"calcul c1"
+		z1
+			hauteur du front
+
+			si y'a un extra,
+			+ 1 + hauteur de l'extra
+
+			appelons ça le "calcul z1"
+		z2
+			"calcul z1" + 3
+		z3
+			"calcul z1"
+		r1
+			tuple : hauteur du front, hauteur du back
+		r3
+			tuple : hauteur du front, hauteur du back
+
+	on calcule la nouvelle hauteur (en nombre de lignes) passée aux balises img
+	selon notre regexp "<img...>"
+	appelons ça la "hauteur_ligne" des images.
+
+	et merde... je viens de réaliser que la hauteur_ligne des images
+	est utilisée dans le calcul de la hauteur.
+	ça change tout...
+	faudrait d'abord mettre un tuple qui contient seulement les hauteurs_ligne...
+
+	reprenons.
+	imagine on rajoute rien à sections_fields.
+	on crée un "sections_fields_img".
+	de base c'est la copie de sections_fields,
+	et on remplace tous les champs par la hauteur_ligne des champs calculée.
+	ça va simplifier le code d'"encode" plus tard vu qu'on aura toujours une hauteur_ligne sur nos images.
+	donc, le but, c'est qu'on puisse calculer la hauteur de nos notes
+	selon le type comme tout à l'heure,
+	mais combiner ça tout de suite avec l'ajustement de la hauteur.
+	ensuite, on aura plus qu'à remplacer toutes les balises img de notre sections_fields
+	avec la taille ajustée qu'on a trouvé et mise dans sections_fields_img.
+
+	on peut probablement faire mieux en terme de performances.
+	j'ai l'impression qu'on est en train d'utiliser tous les bazukas de notre armée là.
+
+	on peut créer un dictionnaire
+	qui mappe nos images
+	avec leur hauteur_ligne.
+	les clés c'est tout simplement le texte genre "<img>blabla.png</img>"
+	et la valeur là ce serait 10
+
+	si une ligne possède des images
+		on initialise hauteur max à 0.
+		pour chaque image de la ligne,
+		si ça hauteur_ligne est > hauteur max,
+		on met à jour hauteur max.
+		on obtient la hauteur de la ligne.
+
+	imagine on traite les sections C1.
+	on a une liste basique qui représente une carte : front, back.
+
+	on a directement sa taille sans compter les images,
+	c'est : nombre de "\n" de front + 1 + 1 + nombre de "\n" du back + 1
+
+	on sait que le max à pas dépasser c'est 22.
+	omg quelle torture.
+	c'est tellement compliqué pour si peu...
+
+	c'est bon, j'ai réalisé que c'était une mauvaise idée.
+	on peut faire mieux.
+	on va rien essayer d'automatiser dans le script,
+	on va juste mieux réfléchir à la taille des images
+	quand on écrit nos cartes !
+
+	imagine qu'on paste nos images comme ça :
+	<img10
+	blabla>
+	je trouve ça propre et en plus ça sécurise mieux le retour à la ligne
+	que le inline que je testais depuis quelques temps.
+	comme quoi, certaines choses étaient mieux avant.
+
+	par contre il faudrait patcher rapidement le script
+	parce que là j'ai changé la config vscode...
+
+	ce que je voulais dire en tout cas
+	c'est qu'il faut prendre conscience des tailles quand on crée les cartes.
+	pas seulement sur les images genre "ligne de texte" :
+	si c'est une image seule, ou 2 images carrées, seul· sur un front,
+	faut pas hésiter à mettre taille 13.
+	si c'est 3 images sur une ligne... taille 8 ? ça dépend en fait, je sais pas trop...

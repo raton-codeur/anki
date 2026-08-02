@@ -20,7 +20,7 @@ def check_param():
         sys.exit(f"{define.RED}erreur : connexion à Anki impossible{define.RESET}\n{e}")
 
     decks = ankiconnect("deckNames")
-    for deck in define.DECK_1, define.DECK_2, define.DECK_3:
+    for deck in define.DECK_BASE, define.DECK_TAPER, define.DECK_PAPIER, define.DECK_SONG:
         if deck not in decks:
             print(f"{define.RED}erreur : {deck} : mauvais nom de paquet{define.RESET}\ndecks existants :")
             for d in decks:

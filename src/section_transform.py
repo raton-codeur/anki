@@ -32,21 +32,22 @@ def first_split(lines):
             "---": "3",
             "-r": "R1",
             "---r": "R3",
-            "-)": "MS"
+            "-)": "MS",
+            "-song": "SONG"
     }
 
-    sections_tmp = {"1": [], "2": [], "3": [], "R1": [], "R3": [], "MS": []}
+    sections_tmp = {"1": [], "2": [], "3": [], "R1": [], "R3": [], "MS": [], "SONG": []}
     for sep, section in sections:
         sections_tmp[get_new_key[sep]].append(section)
     sections = sections_tmp
 
     # sections est maintenant un dictionnaire avec
-        # clés : "1", "2", "3", "R1", "R3", "MS"
+        # clés : "1", "2", "3", "R1", "R3", "MS", "SONG"
         # valeur : la liste des sections correspondantes
 
     # on veut séparer les sections avec trou
 
-    sections_tmp = {"C1": [], "C2": [], "C3": [], "Z1": [], "Z2": [], "Z3": [], "R1": sections["R1"], "R3": sections["R3"], "MS": sections["MS"]}
+    sections_tmp = {"C1": [], "C2": [], "C3": [], "Z1": [], "Z2": [], "Z3": [], "R1": sections["R1"], "R3": sections["R3"], "MS": sections["MS"], "SONG": sections["SONG"]}
     for i in "1", "2", "3":
         for section in sections[i]:
             if re.search(define.FORMATS["cloze"], section):
@@ -56,7 +57,7 @@ def first_split(lines):
             sections_tmp[key].append(section)
     sections = sections_tmp
 
-    # sections est maintenant un dictionnaire avec [ clés : "C1", "C2", "C3", "Z1", "Z2", "Z3", "R1", "R3", "MS" ]
+    # sections est maintenant un dictionnaire avec [ clés : "C1", "C2", "C3", "Z1", "Z2", "Z3", "R1", "R3", "MS", "SONG" ]
     # et [ valeur : la liste des sections correspondantes ]
 
     return sections

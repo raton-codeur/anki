@@ -19,21 +19,21 @@ def print_sections(sections):
             print(f"  {type} : {sections_}")
 
 def print_count_cards(sections):
-    result = {"1": 0, "2": 0, "3": 0, "MS": 0}
-    result["1"] += len(sections["C1"])
-    result["1"] += len(sections["R1"])
-    result["2"] += len(sections["C2"])
-    result["3"] += len(sections["C3"])
-    result["3"] += len(sections["R3"])
+    result = {"base": 0, "taper": 0, "papier": 0, "song": 0, "MS": 0}
+    result["base"] += len(sections["C1"])
+    result["base"] += len(sections["R1"])
+    result["taper"] += len(sections["C2"])
+    result["papier"] += len(sections["C3"])
+    result["papier"] += len(sections["R3"])
+    result["song"] += len(sections["SONG"])
     result["MS"] += len(sections["MS"])
-    for type, deck in (("Z1", "1"), ("Z2", "2"), ("Z3", "3")):
+    for type, deck in (("Z1", "base"), ("Z2", "taper"), ("Z3", "papier")):
         for section in sections[type]:
             result[deck] += len({m.group(1) for m in re.finditer(define.FORMATS["cloze"], section[0])})
 
-    for type in "1", "2", "3":
-        print(f"  {type} : {result[type]}")
-    if result["MS"] > 0:
-        print(f"  MS : {result['MS']}")
+    for type in "base", "taper", "papier", "song", "MS":
+        if result[type]:
+            print(f"  {type} : {result[type]}")
 
 def update_input_trash():
     # on veut maintenir une archive des 10 derniers inputs traités.
@@ -65,7 +65,7 @@ def reset_img_dir():
 
 def get_trashed_cards():
     return ankiconnect("findNotes",
-        {"query": f'deck:"{define.TRASH_DECK}"'}
+        {"query": f'deck:"{define.DECK_POUBELLE}"'}
     )
 
 def update_anki_trash(note_ids):
@@ -87,7 +87,7 @@ def update_anki_trash(note_ids):
             os.rename(a, b)
 
     ankiconnect("exportPackage", {
-        "deck": define.TRASH_DECK,
+        "deck": define.DECK_POUBELLE,
         "path": os.path.join(define.TRASH_DIR, "0.apkg")
     })
 

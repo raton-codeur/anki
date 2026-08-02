@@ -15,8 +15,8 @@ def format_for_ankiconnect(section, type):
 def get_final_sections(sections_encoded, sections_raw):
     sections_anki = [] # les sections formatées pour anki connect.
         # exemple avec C1 = [['a', 'b'], ['c', '']]
-        # → [{'modelName': 'card', 'deckName': '1 - basic', 'fields': {'front': 'a', 'back': 'b'}},
-        # {'modelName': 'card', 'deckName': '1 - basic', 'fields': {'front': 'c', 'back': ''}}]
+        # → [{'modelName': 'card', 'deckName': 'base', 'fields': {'front': 'a', 'back': 'b'}},
+        # {'modelName': 'card', 'deckName': 'base', 'fields': {'front': 'c', 'back': ''}}]
     sections_anki_raw = [] # les sections brutes correspondantes.
     sections_mosalingua = [] # les sections encodées pour mosalingua.
     sections = {} # toutes les sections, sauf les sections vides.

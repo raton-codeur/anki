@@ -59,7 +59,11 @@ def check_and_move_images(sections):
         for section in sections_tmp:
             images = re.findall(define.FORMATS["img"], section)
             for height, name in images:
-                if height and int(height) == 0:
+                if not height:
+                    pyperclip.copy(section)
+                    sys.exit(f"{define.RED}erreur : hauteur d'image vide{define.RESET}\n"
+                            f"section {type} copiée : {define.YELLOW}{section}{define.RESET}")
+                if not height.isdigit() or int(height) == 0:
                     pyperclip.copy(section)
                     sys.exit(f"{define.RED}erreur : \"{height}\" : height invalide{define.RESET}\n"
                             f"section {type} copiée : {define.YELLOW}{section}{define.RESET}")
