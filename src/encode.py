@@ -32,7 +32,7 @@ def encode(sections):
                 # on remplace temporairement les "<" et ">" des balises.
                 section[i] = re.sub(
                     define.FORMATS["img"],
-                    lambda m: f'LEFT_ANGLE_BRACKETimg src="{m.group(2).strip()}" style="height: {int(m.group(1)) * define.LINE_HEIGHT}px;"RIGHT_ANGLE_BRACKET',
+                    lambda m: f'LEFT_ANGLE_BRACKETimg src="{m.group(2).strip()}" style="height: calc({define.LINE_HEIGHT}px * {int(m.group(1))});"RIGHT_ANGLE_BRACKET',
                     section[i]
                 )
                 section[i] = re.sub(
