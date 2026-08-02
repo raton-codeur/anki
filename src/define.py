@@ -7,7 +7,7 @@ if dev:
 else:
     INPUT_PATH = '/Users/quentinhauuy/Documents/anki/input.txt'
     IMAGES_SRC_DIR = '/Users/quentinhauuy/Documents/anki/images'
-    TRASH_DIR = "/Users/quentinhauuy/Documents/anki/poubelle/poubelle_du_script"
+    TRASH_DIR = "/Users/quentinhauuy/Documents/anki/trash"
 
 IMAGES_DST_DIR = "/Users/quentinhauuy/Library/Application Support/Anki2/Quentin/collection.media"
 
