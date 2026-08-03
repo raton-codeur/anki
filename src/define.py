@@ -131,7 +131,7 @@ FORMATS = {
     "img": r'<img h=([^\n]*)\n([^>]*)>',
         # groupe 1 : hauteur
         # groupe 2 : nom du fichier
-    "decode_img": r'<img src="([^"]+)"[^>]*>',
+    "decode_img": r'<img[^>]+src="([^"]+)"',
         # groupe 1 : nom du fichier
     "red": r'<red>([\s\S]*?)</red>',
         # groupe 1 : contenu de la balise
