@@ -5,7 +5,7 @@ from encode import encode
 from final_add import get_final_sections, check_can_add_to_anki, add_to_anki, mosalingua_output
 from utils import check_anki, print_sections, print_count_cards, open_input_in_vscode
 from backup import backup_input
-from reset import reset_input, reset_img_dir
+from reset import reset_input, remove_img_dir
 import sys
 
 # checks
@@ -60,8 +60,8 @@ check_can_add_to_anki(sections_anki, sections_anki_raw)
 add_to_anki(sections_anki)
 # les notes sont maintenant ajoutées à anki.
 
-reset_img_dir()
-# le dossier des images a été vidé.
+remove_img_dir()
+# le dossier des images a été mis à la corbeille.
 
 if (any(sections.values())):
     backup_input()

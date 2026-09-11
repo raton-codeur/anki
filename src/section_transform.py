@@ -86,7 +86,7 @@ def split_fields(sections):
         result[type] = []
         nb_fields = define.NB_FIELDS[type]
         for section in sections_:
-            new = [field.strip(" \n\r") for field in re.split(r"(?<!\\)@", section)]
+            new = [field.lstrip(" \n\r").rstrip(" \t\n\r") for field in re.split(r"(?<!\\)@", section)]
             if type == "MS" and len(new) == 2:
                 new.insert(1, "")
                 new.append("")

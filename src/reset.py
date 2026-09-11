@@ -6,12 +6,9 @@ def reset_input():
     with open(define.INPUT_PATH, "w") as f:
         f.write("-\n")
 
-def reset_img_dir():
-    if not define.IMAGES_SRC_DIR.exists():
-        return
-    for f in define.IMAGES_SRC_DIR.iterdir():
-        send2trash(f)
-    print(f"{define.IMAGES_SRC_DIR} a été vidé")
+def remove_img_dir():
+    if define.IMAGES_SRC_DIR.is_dir():
+        send2trash(define.IMAGES_SRC_DIR)
 
 def reset_anki_trash():
     note_ids = ankiconnect(
