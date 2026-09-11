@@ -58,7 +58,7 @@ def add_to_anki(sections) :
             print(f"{define.RED}impossible d'ajouter cette note :{define.RESET}\n"
                 f"\tnote de type \"{section['modelName']}\", deck \"{section['deckName']}\"\n"
                 f"\t{define.YELLOW}{section['fields']}{define.RESET}\n"
-                f"à retrouver dans le dernier input traité : {define.TRASH_DIR}/0.txt")
+                f"à retrouver dans le dernier fichier de backup, dans : {define.BACKUPS_INPUT}")
 
 def mosalingua_output(sections):
     # sections : les sections MosaLingua

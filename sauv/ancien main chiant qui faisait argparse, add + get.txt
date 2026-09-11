@@ -1,3 +1,4 @@
+
 import argparse
 import define
 from check_param import check_param
@@ -37,16 +38,13 @@ def what_to_run(only):
 
 def main():
     args = parse_arguments()
-
     define.setup(args.env)
-
     run_add, run_get = what_to_run(args.only)
 
     check_param()
 
     if run_add:
         add()
-        
     if run_get:
         get()
 

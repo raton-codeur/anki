@@ -1,29 +1,21 @@
 from pathlib import Path
+import os
+from datetime import datetime
 
-def setup(env):
-    global INPUT_PATH, IMAGES_SRC_DIR, TRASH_DIR
+BASE_DIR = Path(os.environ["BASE_DIR"])
+INPUT_PATH = BASE_DIR / "input.txt"
+IMAGES_SRC_DIR = BASE_DIR / "images"
+BACKUPS_INPUT = BASE_DIR / "backups" / "input"
+BACKUPS_TRASH = BASE_DIR / "backups" / "removed_cards"
+BACKUPS_IMAGES = BASE_DIR / "backups" / "removed_images"
 
-    if env == "dev":
-        base_dir = Path("/Users/quentinhauuy/code/anki_dev")
-    else:
-        base_dir = Path("/Users/quentinhauuy/Documents/anki")
-
-    INPUT_PATH = base_dir / "input.txt"
-    IMAGES_SRC_DIR = base_dir / "images"
-    TRASH_DIR = base_dir / "trash"
-
-IMAGES_DST_DIR = "/Users/quentinhauuy/Library/Application Support/Anki2/Quentin/collection.media"
-
-SPOTIFY_CLIENT_ID = "efe7eb169b7d4e40a9d22123ea9e3912"
-SPOTIFY_CLIENT_SECRET = "713431dadce14f2a972e35a713caf19c"
-
-SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8888/callback"
-SPOTIFY_SCOPE = "playlist-read-private playlist-modify-private"
-SPOTIFY_TOKEN_FILE = "/Users/quentinhauuy/code/anki/spotify_token.json"
+IMAGES_DST_DIR = Path("/Users/quentinhauuy/Library/Application Support/Anki2/Quentin/collection.media")
 
 RED = "\033[31m"
 YELLOW = "\033[33m"
 RESET = "\033[0m"
+
+TIMESTAMP = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 
 LINE_HEIGHT = 36 # line-height en pixels dans le CSS des cartes
 
@@ -113,18 +105,6 @@ ANKI_CONNECT_MODELS = {
 }
 
 SEPARATORS = '-', '--', '---', '-)', '-r', '---r', '-song'
-
-GET_SEPARATOR = {
-    (MODEL_CARD, DECK_BASE): "-", # C1
-    (MODEL_TAPE, DECK_TAPER): "--", # C2
-    (MODEL_CARD, DECK_PAPIER): "---", # C3
-    (MODEL_REPLACE, DECK_BASE): "-r", # R1
-    (MODEL_REPLACE, DECK_PAPIER): "---r", # R3
-    (MODEL_CLOZE, DECK_BASE): "-", # Z1
-    (MODEL_CLOZE_TAPE, DECK_TAPER): "--", # Z2
-    (MODEL_CLOZE, DECK_PAPIER): "---", # Z3,
-    (MODEL_CARD, DECK_SONG): "-song" # SONG
-}
 
 # nom d'un format -> regex
 FORMATS = {

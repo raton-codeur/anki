@@ -1,33 +1,51 @@
-from handle_marked import get_marked, decode_notes, get_back_images, backfill_input, move_marked_cards
-from utils import get_trashed_cards, update_anki_trash
-from handle_spotify import get_songs, handle_spotify, copy_songs_to_input
+from utils import check_anki, get_card_ids_by_query, move_cards_to_trash, open_input_in_vscode
+import define
+from get_utils import get_notes_data, decode_notes
+from backup import backup_notes, backup_images
+from reset import reset_anki_trash
+import sys
 
-def get():
-    marked_card_ids, marked_notes = get_marked()
-    # marked_notes est une liste de dictionnaires des cartes marquées sur Anki
-    # dont les clés sont : separator, fields
-    if marked_notes:
-        print(f"{len(marked_notes)} notes récupérées")
+check_anki()
+if not define.INPUT_PATH.is_file():
+    sys.exit(f"{define.RED}erreur : input.txt introuvable{define.RESET}\nINPUT_PATH : {define.INPUT_PATH}")
 
-        marked_notes = decode_notes(marked_notes)
-        # les notes marquées sont maintenant décodées.
+# le deck est lié aux cartes, pas aux notes.
+# (perso, toutes les cartes d'une note sont dans le même deck.)
+# donc pour tout ce qui est "récupérer le deck" et "changer de deck",
+# on doit utiliser les fonctions liées aux cartes...
 
-        get_back_images(marked_notes)
-        # on a récupéré les images des cartes marquées.
+selected_card_ids = get_card_ids_by_query("is:buried OR tag:marked")
 
-        backfill_input(marked_notes)
-        # on a récupéré les cartes marquées dans l'input.
+selected_notes = get_notes_data(selected_card_ids)
+# c'est une liste de dictionnaires.
+# un dictionnaire a les clés :
+# separator : le séparateur à utiliser dans le .txt
+# fields : la liste des champs
 
-        move_marked_cards(marked_card_ids)
+selected_notes = decode_notes(selected_notes)
 
-    trashed_note_ids = get_trashed_cards()
-    if trashed_note_ids:
-        print(f"{len(trashed_note_ids)} notes retirées d'Anki")
+backup_notes(selected_notes, define.INPUT_PATH)
+backup_images(selected_notes, define.IMAGES_SRC_DIR)
+# les notes cibles sont maintenant récupérées dans l'input
+# et leurs images ont été copiées dans le dossier source des images
 
-        update_anki_trash(trashed_note_ids)
-        # la poubelle d'Anki a été vidée.
+move_cards_to_trash(selected_card_ids)
+# les cartes cibles ont été déplacées dans le deck poubelle
 
-    songs = get_songs()
-    if songs:
-        handle_spotify(songs)
-    copy_songs_to_input(songs)
+trashed_card_ids = get_card_ids_by_query(f'deck:"{define.DECK_POUBELLE}"')
+trashed_notes = get_notes_data(trashed_card_ids)
+trashed_notes = decode_notes(trashed_notes)
+backup_path = define.BACKUPS_TRASH / f"{define.TIMESTAMP}.txt"
+backup_notes(trashed_notes, backup_path)
+backup_images(trashed_notes, define.BACKUPS_IMAGES)
+# les notes du deck poubelle et leurs images ont été archivées
+
+reset_anki_trash()
+# les notes du deck poubelle ont été supprimées
+
+print(f"{len(selected_notes)} notes récupérées")
+print(f"{len(trashed_notes) - len(selected_notes)} notes supprimées")
+if trashed_notes:
+    print(f"archive : {backup_path}")
+
+open_input_in_vscode()

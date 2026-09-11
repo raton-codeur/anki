@@ -1,5 +1,5 @@
 import define
-import pyperclip, re, shutil, os, sys
+import pyperclip, re, shutil, sys, send2trash
 
 def check_top(lines):
     if not lines:
@@ -11,6 +11,7 @@ def check_top(lines):
 
 def check_angle_brackets(sections):
     """pas de LEFT_ANGLE_BRACKET ni RIGHT_ANGLE_BRACKET dans les sections brutes"""
+
     for type, sections_ in sections.items():
         for section in sections_:
             if re.search(r"LEFT_ANGLE_BRACKET|RIGHT_ANGLE_BRACKET", section):
@@ -20,6 +21,7 @@ def check_angle_brackets(sections):
 
 def check_MS(sections):
     """pas d'image ni trou ni tab dans les sections MS"""
+
     for section in sections:
 
         # check tabs
@@ -41,7 +43,8 @@ def check_MS(sections):
                 f"section MS copiée : {define.YELLOW}{section}{define.RESET}")
 
 def check_Z(sections):
-    """ pas de trou vide dans les sections Z1, Z2, Z3 """
+    """ pas de trou vide """
+
     for type in "Z1", "Z2", "Z3":
         for section in sections[type]:
             for m in re.finditer(define.FORMATS["cloze"], section):
@@ -65,14 +68,12 @@ def check_and_move_images(sections):
                             f"section {type} copiée : {define.YELLOW}{section}{define.RESET}")
                 if not height.isdigit() or int(height) == 0:
                     pyperclip.copy(section)
-                    sys.exit(f"{define.RED}erreur : \"{height}\" : height invalide{define.RESET}\n"
+                    sys.exit(f"{define.RED}erreur : \"{height}\" : hauteur invalide{define.RESET}\n"
                             f"section {type} copiée : {define.YELLOW}{section}{define.RESET}")
 
                 name = name.strip()
-                name_src = os.path.join(define.IMAGES_SRC_DIR, name)
-                name_dst = os.path.join(define.IMAGES_DST_DIR, name)
-                src_exists = os.path.exists(name_src)
-                dst_exists = os.path.exists(name_dst)
+                name_src = define.IMAGES_SRC_DIR / name
+                name_dst = define.IMAGES_DST_DIR / name
                 if not name:
                     pyperclip.copy(section)
                     sys.exit(f"{define.RED}erreur : image vide{define.RESET}\n"
@@ -89,18 +90,18 @@ def check_and_move_images(sections):
                             "- parenthèse\n"
                             "- point\n"
                             f"section {type} copiée : {define.YELLOW}{section}{define.RESET}")
-                elif not src_exists and not dst_exists:
+                elif not name_src.exists() and not name_dst.exists():
                     pyperclip.copy(section)
                     sys.exit(f"{define.RED}erreur : \"{name}\" : image introuvable{define.RESET}\n"
                             f"dossier source : '{define.IMAGES_SRC_DIR}'\n"
                             f"dossier destination : '{define.IMAGES_DST_DIR}'\n"
                             f"section {type} copiée : {define.YELLOW}{section}{define.RESET}")
-                elif src_exists:
-                    if dst_exists:
-                        pyperclip.copy(section)
-                        sys.exit(f"{define.RED}erreur : \"{name}\" : une image du même nom existe déjà dans le dossier de destination{define.RESET}\n"
-                        f"section {type} copiée : {define.YELLOW}{section}{define.RESET}")
-                    shutil.move(name_src, name_dst)
+                elif name_src.exists():
+                    if name_dst.exists():
+                        print(f"\"{name}\" existe déjà (image source envoyée à la corbeille)")
+                        send2trash.send2trash(name_src)
+                    else:
+                        shutil.move(name_src, name_dst)
 
 def check_fields(sections_fields, sections_raw):
 

@@ -1,3 +1,11 @@
+à la fin de la fonction get, j'avais :
+
+    # songs = get_songs()
+    # if songs:
+    #     handle_spotify(songs)
+    # copy_songs_to_input(songs)
+
+et le fichier handle_spotify :
 import define
 from utils import ankiconnect
 import spotipy, re
@@ -36,17 +44,17 @@ def get_songs() :
         result.append((title, artist, link, content))
     return result
 
-spotify = spotipy.Spotify(
-    auth_manager=SpotifyOAuth(
-        client_id=define.SPOTIFY_CLIENT_ID,
-        client_secret=define.SPOTIFY_CLIENT_SECRET,
-        redirect_uri=define.SPOTIFY_REDIRECT_URI,
-        scope=define.SPOTIFY_SCOPE,
-        cache_handler=CacheFileHandler(
-            cache_path=define.SPOTIFY_TOKEN_FILE
-        ),
-    )
-)
+# spotify = spotipy.Spotify(
+#     auth_manager=SpotifyOAuth(
+#         client_id=define.SPOTIFY_CLIENT_ID,
+#         client_secret=define.SPOTIFY_CLIENT_SECRET,
+#         redirect_uri=define.SPOTIFY_REDIRECT_URI,
+#         scope=define.SPOTIFY_SCOPE,
+#         cache_handler=CacheFileHandler(
+#             cache_path=define.SPOTIFY_TOKEN_FILE
+#         ),
+#     )
+# )
 
 def search_to_uri(title: str, artist: str) -> str:
     tracks = spotify.search(
@@ -115,3 +123,11 @@ def copy_songs_to_input(songs) :
     data = "\n".join(data)
     with open(define.INPUT_PATH, "a") as f:
         f.write(data)
+
+et dans le define.py :
+# SPOTIFY_CLIENT_ID = "efe7eb169b7d4e40a9d22123ea9e3912"
+# SPOTIFY_CLIENT_SECRET = "713431dadce14f2a972e35a713caf19c"
+
+# SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8888/callback"
+# SPOTIFY_SCOPE = "playlist-read-private playlist-modify-private"
+# SPOTIFY_TOKEN_FILE = "/Users/quentinhauuy/code/anki/spotify_token.json"
