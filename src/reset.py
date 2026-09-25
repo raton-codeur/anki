@@ -8,6 +8,8 @@ def reset_input():
 
 def remove_img_dir():
     if define.IMAGES_SRC_DIR.is_dir():
+        for f in define.IMAGES_SRC_DIR.iterdir():
+            print(f"image non utilisée envoyée à la corbeille : {f.name}")
         send2trash(define.IMAGES_SRC_DIR)
 
 def reset_anki_trash():
