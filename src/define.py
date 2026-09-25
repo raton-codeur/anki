@@ -2,12 +2,13 @@ from pathlib import Path
 import os
 from datetime import datetime
 
-BASE_DIR = Path(os.environ["BASE_DIR"])
-INPUT_PATH = BASE_DIR / "input.txt"
-IMAGES_SRC_DIR = BASE_DIR / "images"
-BACKUPS_INPUT = BASE_DIR / "backups" / "input"
-BACKUPS_TRASH = BASE_DIR / "backups" / "removed_cards"
-BACKUPS_IMAGES = BASE_DIR / "backups" / "removed_images"
+BACKUPS_DIR = Path(os.environ["BACKUPS_DIR"])
+INPUT_DIR = Path(os.environ["INPUT_DIR"])
+INPUT_PATH = INPUT_DIR / "input.txt"
+IMAGES_SRC_DIR = INPUT_DIR / "images"
+BACKUPS_INPUT = BACKUPS_DIR / "input"
+BACKUPS_TRASH = BACKUPS_DIR / "removed_cards"
+BACKUPS_IMAGES = BACKUPS_DIR / "removed_images"
 
 IMAGES_DST_DIR = Path("/Users/quentinhauuy/Library/Application Support/Anki2/Quentin/collection.media")
 

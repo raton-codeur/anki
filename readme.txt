@@ -17,6 +17,7 @@ git
 		faire un commit puis "git switch main"
 
 	pour valider les changements de dev,
+	faire un commit sur dev,
 	aller sur la branche main ("git switch main" ou aller dans ~/code/anki) puis :
 	git merge dev
 
